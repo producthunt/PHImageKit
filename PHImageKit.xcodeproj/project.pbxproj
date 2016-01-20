@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		E729DE801C4FD93800696039 /* PHImageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E729DE7F1C4FD93800696039 /* PHImageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E729DE871C4FD93800696039 /* PHImageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E729DE7C1C4FD93800696039 /* PHImageKit.framework */; };
-		E729DE8C1C4FD93800696039 /* PHImageKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DE8B1C4FD93800696039 /* PHImageKitTests.swift */; };
 		E729DE9D1C4FDA3F00696039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DE9C1C4FDA3F00696039 /* AppDelegate.swift */; };
 		E729DE9F1C4FDA3F00696039 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DE9E1C4FDA3F00696039 /* ViewController.swift */; };
 		E729DEA21C4FDA3F00696039 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E729DEA01C4FDA3F00696039 /* Main.storyboard */; };
@@ -35,6 +34,15 @@
 		E729DED21C4FDC3500696039 /* IKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC61C4FDC3500696039 /* IKManager.swift */; };
 		E729DED31C4FDC3500696039 /* IKMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC71C4FDC3500696039 /* IKMemoryCache.swift */; };
 		E729DED41C4FDC3500696039 /* IKProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC81C4FDC3500696039 /* IKProgressView.swift */; };
+		E729DEDF1C4FDCD900696039 /* IKAnimatedImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DED61C4FDCD900696039 /* IKAnimatedImageTests.swift */; };
+		E729DEE01C4FDCD900696039 /* IKCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DED71C4FDCD900696039 /* IKCacheTests.swift */; };
+		E729DEE11C4FDCD900696039 /* IKDonwloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DED81C4FDCD900696039 /* IKDonwloaderTests.swift */; };
+		E729DEE21C4FDCD900696039 /* IKFileCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DED91C4FDCD900696039 /* IKFileCacheTests.swift */; };
+		E729DEE31C4FDCD900696039 /* IKImageObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEDA1C4FDCD900696039 /* IKImageObjectTests.swift */; };
+		E729DEE41C4FDCD900696039 /* IKManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEDB1C4FDCD900696039 /* IKManagerTests.swift */; };
+		E729DEE51C4FDCD900696039 /* IKMemoryCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEDC1C4FDCD900696039 /* IKMemoryCacheTests.swift */; };
+		E729DEE61C4FDCD900696039 /* NSURLImageKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEDD1C4FDCD900696039 /* NSURLImageKitTests.swift */; };
+		E729DEE71C4FDCD900696039 /* XCTestCase+ImageKitHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEDE1C4FDCD900696039 /* XCTestCase+ImageKitHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +60,6 @@
 		E729DE7F1C4FD93800696039 /* PHImageKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PHImageKit.h; sourceTree = "<group>"; };
 		E729DE811C4FD93800696039 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E729DE861C4FD93800696039 /* PHImageKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PHImageKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E729DE8B1C4FD93800696039 /* PHImageKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHImageKitTests.swift; sourceTree = "<group>"; };
 		E729DE8D1C4FD93800696039 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E729DE9A1C4FDA3F00696039 /* PHImageKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PHImageKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E729DE9C1C4FDA3F00696039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +88,16 @@
 		E729DEC61C4FDC3500696039 /* IKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKManager.swift; sourceTree = "<group>"; };
 		E729DEC71C4FDC3500696039 /* IKMemoryCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKMemoryCache.swift; sourceTree = "<group>"; };
 		E729DEC81C4FDC3500696039 /* IKProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKProgressView.swift; sourceTree = "<group>"; };
+		E729DED51C4FDCD800696039 /* PHImageKitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PHImageKitTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		E729DED61C4FDCD900696039 /* IKAnimatedImageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKAnimatedImageTests.swift; sourceTree = "<group>"; };
+		E729DED71C4FDCD900696039 /* IKCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKCacheTests.swift; sourceTree = "<group>"; };
+		E729DED81C4FDCD900696039 /* IKDonwloaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKDonwloaderTests.swift; sourceTree = "<group>"; };
+		E729DED91C4FDCD900696039 /* IKFileCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKFileCacheTests.swift; sourceTree = "<group>"; };
+		E729DEDA1C4FDCD900696039 /* IKImageObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKImageObjectTests.swift; sourceTree = "<group>"; };
+		E729DEDB1C4FDCD900696039 /* IKManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKManagerTests.swift; sourceTree = "<group>"; };
+		E729DEDC1C4FDCD900696039 /* IKMemoryCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKMemoryCacheTests.swift; sourceTree = "<group>"; };
+		E729DEDD1C4FDCD900696039 /* NSURLImageKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLImageKitTests.swift; sourceTree = "<group>"; };
+		E729DEDE1C4FDCD900696039 /* XCTestCase+ImageKitHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+ImageKitHelpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,8 +171,17 @@
 		E729DE8A1C4FD93800696039 /* PHImageKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				E729DE8B1C4FD93800696039 /* PHImageKitTests.swift */,
+				E729DED61C4FDCD900696039 /* IKAnimatedImageTests.swift */,
+				E729DED71C4FDCD900696039 /* IKCacheTests.swift */,
+				E729DED81C4FDCD900696039 /* IKDonwloaderTests.swift */,
+				E729DED91C4FDCD900696039 /* IKFileCacheTests.swift */,
+				E729DEDA1C4FDCD900696039 /* IKImageObjectTests.swift */,
+				E729DEDB1C4FDCD900696039 /* IKManagerTests.swift */,
+				E729DEDC1C4FDCD900696039 /* IKMemoryCacheTests.swift */,
+				E729DEDD1C4FDCD900696039 /* NSURLImageKitTests.swift */,
+				E729DEDE1C4FDCD900696039 /* XCTestCase+ImageKitHelpers.swift */,
 				E729DE8D1C4FD93800696039 /* Info.plist */,
+				E729DED51C4FDCD800696039 /* PHImageKitTests-Bridging-Header.h */,
 			);
 			path = PHImageKitTests;
 			sourceTree = "<group>";
@@ -355,7 +381,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E729DE8C1C4FD93800696039 /* PHImageKitTests.swift in Sources */,
+				E729DEE21C4FDCD900696039 /* IKFileCacheTests.swift in Sources */,
+				E729DEE11C4FDCD900696039 /* IKDonwloaderTests.swift in Sources */,
+				E729DEE31C4FDCD900696039 /* IKImageObjectTests.swift in Sources */,
+				E729DEE51C4FDCD900696039 /* IKMemoryCacheTests.swift in Sources */,
+				E729DEE01C4FDCD900696039 /* IKCacheTests.swift in Sources */,
+				E729DEE61C4FDCD900696039 /* NSURLImageKitTests.swift in Sources */,
+				E729DEE71C4FDCD900696039 /* XCTestCase+ImageKitHelpers.swift in Sources */,
+				E729DEDF1C4FDCD900696039 /* IKAnimatedImageTests.swift in Sources */,
+				E729DEE41C4FDCD900696039 /* IKManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,20 +559,25 @@
 		E729DE941C4FD93800696039 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PHImageKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ProductHunt.PHImageKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PHImageKitTests/PHImageKitTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		E729DE951C4FD93800696039 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PHImageKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ProductHunt.PHImageKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PHImageKitTests/PHImageKitTests-Bridging-Header.h";
 			};
 			name = Release;
 		};
