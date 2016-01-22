@@ -144,6 +144,7 @@ public class PHImageView: UIImageView {
         } else {
             self.stopAnimating()
         }
+
     }
 
     public override func didMoveToWindow() {
@@ -155,6 +156,7 @@ public class PHImageView: UIImageView {
         } else {
             self.stopAnimating()
         }
+
     }
 
     public override func intrinsicContentSize() -> CGSize {
@@ -168,7 +170,8 @@ public class PHImageView: UIImageView {
     public override var image:UIImage? {
         get {
             return self.currentFrame ?? super.image
-        } set {
+        }
+        set {
             if image != nil {
                 self.animatedImage = nil
             }
@@ -222,10 +225,13 @@ public class PHImageView: UIImageView {
     }
 
     public override var highlighted: Bool {
-        didSet {
+        set {
             if self.animatedImage == nil {
                 super.highlighted = highlighted
-            }
+            } 
+        }
+        get {
+            return super.highlighted
         }
     }
 

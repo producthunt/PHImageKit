@@ -24,11 +24,6 @@ class PHImageKItCollectionViewController: UICollectionViewController, PHImageKit
         imageDataSource.delegate = self
     }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        collectionView?.reloadData()
-    }
-
     // MARK: UICollectionViewDataSource
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

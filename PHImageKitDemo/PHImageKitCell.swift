@@ -13,4 +13,22 @@ class PHImageKitCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: PHImageView!
 
+    override var highlighted : Bool {
+        set {
+            super.highlighted = false
+        }
+        get {
+            return super.highlighted
+        }
+    }
+
+    override var selected: Bool {
+        set {
+            super.selected = false
+        }
+        get {
+            return super.selected
+        }
+    }
+
 }
