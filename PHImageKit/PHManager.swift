@@ -8,7 +8,7 @@
 
 import UIKit
 
-let imageKitDomain = "com.productHunt.imageKit"
+let imageKitDomain = "\(NSBundle.mainBundle().bundleIdentifier!).imageKit"
 
 typealias PHVoidCompletion = () -> Void
 typealias PHProgressCompletion = (percent : CGFloat) -> Void
