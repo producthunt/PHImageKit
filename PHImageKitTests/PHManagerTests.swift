@@ -1,5 +1,5 @@
 //
-//  IKManagerTests.swift
+//  PHManagerTests.swift
 //  PHImageKit
 //
 //  Created by Vlado on 12/7/15.
@@ -8,9 +8,11 @@
 
 import XCTest
 
-class IKManagerTests: XCTestCase {
+@testable import PHImageKit
 
-    let manager = IKManager.sharedInstance
+class PHManagerTests: XCTestCase {
+
+    let manager = PHManager.sharedInstance
     let urlPath = "http://producthunt.com/test.jpg"
 
     override class func setUp() {

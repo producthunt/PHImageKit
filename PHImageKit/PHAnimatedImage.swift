@@ -11,7 +11,7 @@ import ImageIO
 import MobileCoreServices
 import QuartzCore
 
-public class IKAnimatedImage: UIImage {
+public class PHAnimatedImage: UIImage {
 
     //TODO: (Vlado) Handle memory warnings
 

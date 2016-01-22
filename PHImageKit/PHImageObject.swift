@@ -1,5 +1,5 @@
 //
-//  IKImageObject.swift
+//  PHImageObject.swift
 //  PHImageKit
 //
 //  Created by Vlado on 12/7/15.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class IKImageObject {
+class PHImageObject {
 
     var image: UIImage?
-    var gif: IKAnimatedImage?
+    var gif: PHAnimatedImage?
     var data: NSData?
 
     //TODO: (Vlado) Investigate do we need this object.
@@ -28,7 +28,7 @@ class IKImageObject {
             image = UIImage(data: data, scale: UIScreen.mainScreen().scale)?.ik_decompress()
 
         case .GIF :
-            gif = IKAnimatedImage(initWithAnimatedGIFData: data)
+            gif = PHAnimatedImage(initWithAnimatedGIFData: data)
 
 
         default :

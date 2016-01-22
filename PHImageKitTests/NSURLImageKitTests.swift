@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import PHImageKit
+
 class NSURLImageKitTests: XCTestCase {
 
     func testThatHTTPShouldBeValidURL() {

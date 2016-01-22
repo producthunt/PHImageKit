@@ -8,7 +8,7 @@
 
 import Foundation
 
-class IKImageViewProxy {
+class PHImageViewProxy {
 
     weak var target: AnyObject!
 

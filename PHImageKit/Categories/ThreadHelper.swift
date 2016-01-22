@@ -8,7 +8,7 @@
 
 import Foundation
 
-func ik_dispatch_main_queue(closure: IKVoidCompletion) {
+func ik_dispatch_main_queue(closure: PHVoidCompletion) {
     if NSThread.isMainThread() {
         closure()
     } else {

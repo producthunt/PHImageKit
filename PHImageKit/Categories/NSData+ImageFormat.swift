@@ -15,14 +15,14 @@ private let gifHeader   : [UInt8] = [0x47, 0x49, 0x46]
 
 extension NSData {
 
-    enum IKImageFormat : Int {
+    enum PHImageFormat : Int {
         case PNG
         case JPEG
         case GIF
         case Unknown
     }
 
-    var ik_imageFormat: IKImageFormat {
+    var ik_imageFormat: PHImageFormat {
         var buffer = [UInt8](count: 8, repeatedValue: 0)
 
         self.getBytes(&buffer, length: 8)

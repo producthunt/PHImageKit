@@ -1,5 +1,5 @@
 //
-//  IKProgressView.swift
+//  PHProgressView.swift
 //  PHImageKit
 //
 //  Created by Vlado on 12/6/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IKProgressView: UIView {
+class PHProgressView: UIView {
 
     var lineWidth : CGFloat = 5
     var arkColor = UIColor.blackColor()
@@ -22,8 +22,8 @@ class IKProgressView: UIView {
     private let progressLayer = CAShapeLayer()
     private let backgroundView = UIView()
 
-    class func progressInSuperview(superview: UIView) -> IKProgressView {
-        let progressView = IKProgressView()
+    class func progressInSuperview(superview: UIView) -> PHProgressView {
+        let progressView = PHProgressView()
 
         superview.addSubview(progressView)
         progressView.ik_setConstraintsToSuperview()

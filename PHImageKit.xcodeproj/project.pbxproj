@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F6A5044F8169C03F08146CE /* libPods-PHImageKitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 957186C3C124BFEE5BA122E9 /* libPods-PHImageKitTests.a */; };
 		E729DE801C4FD93800696039 /* PHImageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E729DE7F1C4FD93800696039 /* PHImageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E729DE871C4FD93800696039 /* PHImageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E729DE7C1C4FD93800696039 /* PHImageKit.framework */; };
 		E729DE9D1C4FDA3F00696039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DE9C1C4FDA3F00696039 /* AppDelegate.swift */; };
@@ -22,27 +23,49 @@
 		E729DEBA1C4FDC2900696039 /* ThreadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEB21C4FDC2900696039 /* ThreadHelper.swift */; };
 		E729DEBB1C4FDC2900696039 /* UIImage+ImageKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEB31C4FDC2900696039 /* UIImage+ImageKit.swift */; };
 		E729DEBC1C4FDC2900696039 /* UIView+ImageKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEB41C4FDC2900696039 /* UIView+ImageKit.swift */; };
-		E729DEC91C4FDC3500696039 /* IKAnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEBD1C4FDC3500696039 /* IKAnimatedImage.swift */; };
-		E729DECA1C4FDC3500696039 /* IKCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEBE1C4FDC3500696039 /* IKCache.swift */; };
-		E729DECB1C4FDC3500696039 /* IKCacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEBF1C4FDC3500696039 /* IKCacheProtocol.swift */; };
-		E729DECC1C4FDC3500696039 /* IKDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC01C4FDC3500696039 /* IKDownload.swift */; };
-		E729DECD1C4FDC3500696039 /* IKDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC11C4FDC3500696039 /* IKDownloader.swift */; };
-		E729DECE1C4FDC3500696039 /* IKFileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC21C4FDC3500696039 /* IKFileCache.swift */; };
-		E729DECF1C4FDC3500696039 /* IKImageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC31C4FDC3500696039 /* IKImageObject.swift */; };
-		E729DED01C4FDC3500696039 /* IKImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC41C4FDC3500696039 /* IKImageView.swift */; };
-		E729DED11C4FDC3500696039 /* IKImageViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC51C4FDC3500696039 /* IKImageViewProxy.swift */; };
-		E729DED21C4FDC3500696039 /* IKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC61C4FDC3500696039 /* IKManager.swift */; };
-		E729DED31C4FDC3500696039 /* IKMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC71C4FDC3500696039 /* IKMemoryCache.swift */; };
-		E729DED41C4FDC3500696039 /* IKProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC81C4FDC3500696039 /* IKProgressView.swift */; };
-		E729DEDF1C4FDCD900696039 /* IKAnimatedImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DED61C4FDCD900696039 /* IKAnimatedImageTests.swift */; };
-		E729DEE01C4FDCD900696039 /* IKCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DED71C4FDCD900696039 /* IKCacheTests.swift */; };
-		E729DEE11C4FDCD900696039 /* IKDonwloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DED81C4FDCD900696039 /* IKDonwloaderTests.swift */; };
-		E729DEE21C4FDCD900696039 /* IKFileCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DED91C4FDCD900696039 /* IKFileCacheTests.swift */; };
-		E729DEE31C4FDCD900696039 /* IKImageObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEDA1C4FDCD900696039 /* IKImageObjectTests.swift */; };
-		E729DEE41C4FDCD900696039 /* IKManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEDB1C4FDCD900696039 /* IKManagerTests.swift */; };
-		E729DEE51C4FDCD900696039 /* IKMemoryCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEDC1C4FDCD900696039 /* IKMemoryCacheTests.swift */; };
+		E729DEC91C4FDC3500696039 /* PHAnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEBD1C4FDC3500696039 /* PHAnimatedImage.swift */; };
+		E729DECA1C4FDC3500696039 /* PHCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEBE1C4FDC3500696039 /* PHCache.swift */; };
+		E729DECB1C4FDC3500696039 /* PHCacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEBF1C4FDC3500696039 /* PHCacheProtocol.swift */; };
+		E729DECC1C4FDC3500696039 /* PHDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC01C4FDC3500696039 /* PHDownload.swift */; };
+		E729DECD1C4FDC3500696039 /* PHDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC11C4FDC3500696039 /* PHDownloader.swift */; };
+		E729DECE1C4FDC3500696039 /* PHFileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC21C4FDC3500696039 /* PHFileCache.swift */; };
+		E729DECF1C4FDC3500696039 /* PHImageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC31C4FDC3500696039 /* PHImageObject.swift */; };
+		E729DED01C4FDC3500696039 /* PHImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC41C4FDC3500696039 /* PHImageView.swift */; };
+		E729DED11C4FDC3500696039 /* PHImageViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC51C4FDC3500696039 /* PHImageViewProxy.swift */; };
+		E729DED21C4FDC3500696039 /* PHManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC61C4FDC3500696039 /* PHManager.swift */; };
+		E729DED31C4FDC3500696039 /* PHMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC71C4FDC3500696039 /* PHMemoryCache.swift */; };
+		E729DED41C4FDC3500696039 /* PHProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC81C4FDC3500696039 /* PHProgressView.swift */; };
+		E729DEDF1C4FDCD900696039 /* PHAnimatedImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DED61C4FDCD900696039 /* PHAnimatedImageTests.swift */; };
+		E729DEE01C4FDCD900696039 /* PHCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DED71C4FDCD900696039 /* PHCacheTests.swift */; };
+		E729DEE11C4FDCD900696039 /* PHDonwloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DED81C4FDCD900696039 /* PHDonwloaderTests.swift */; };
+		E729DEE21C4FDCD900696039 /* PHFileCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DED91C4FDCD900696039 /* PHFileCacheTests.swift */; };
+		E729DEE31C4FDCD900696039 /* PHImageObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEDA1C4FDCD900696039 /* PHImageObjectTests.swift */; };
+		E729DEE41C4FDCD900696039 /* PHManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEDB1C4FDCD900696039 /* PHManagerTests.swift */; };
+		E729DEE51C4FDCD900696039 /* PHMemoryCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEDC1C4FDCD900696039 /* PHMemoryCacheTests.swift */; };
 		E729DEE61C4FDCD900696039 /* NSURLImageKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEDD1C4FDCD900696039 /* NSURLImageKitTests.swift */; };
 		E729DEE71C4FDCD900696039 /* XCTestCase+ImageKitHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEDE1C4FDCD900696039 /* XCTestCase+ImageKitHelpers.swift */; };
+		E736C99C1C522B9100910933 /* PHAnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEBD1C4FDC3500696039 /* PHAnimatedImage.swift */; };
+		E736C99D1C522BA100910933 /* PHMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC71C4FDC3500696039 /* PHMemoryCache.swift */; };
+		E736C99E1C522BA300910933 /* PHManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC61C4FDC3500696039 /* PHManager.swift */; };
+		E736C99F1C522BA600910933 /* PHImageViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC51C4FDC3500696039 /* PHImageViewProxy.swift */; };
+		E736C9A01C522BA900910933 /* PHImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC41C4FDC3500696039 /* PHImageView.swift */; };
+		E736C9A11C522BAC00910933 /* PHImageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC31C4FDC3500696039 /* PHImageObject.swift */; };
+		E736C9A21C522BAE00910933 /* PHFileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC21C4FDC3500696039 /* PHFileCache.swift */; };
+		E736C9A31C522BB100910933 /* PHDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC11C4FDC3500696039 /* PHDownloader.swift */; };
+		E736C9A41C522BB300910933 /* PHDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC01C4FDC3500696039 /* PHDownload.swift */; };
+		E736C9A51C522BB500910933 /* PHCacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEBF1C4FDC3500696039 /* PHCacheProtocol.swift */; };
+		E736C9A61C522BB700910933 /* PHCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEBE1C4FDC3500696039 /* PHCache.swift */; };
+		E736C9A71C522BE700910933 /* NSData+ImageFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEAD1C4FDC2900696039 /* NSData+ImageFormat.swift */; };
+		E736C9A81C522BE700910933 /* NSDate+ImageKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEAE1C4FDC2900696039 /* NSDate+ImageKit.swift */; };
+		E736C9A91C522BE700910933 /* NSError+ImageKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEAF1C4FDC2900696039 /* NSError+ImageKit.swift */; };
+		E736C9AA1C522BE700910933 /* NSURL+ImageKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEB01C4FDC2900696039 /* NSURL+ImageKit.swift */; };
+		E736C9AB1C522BE700910933 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEB11C4FDC2900696039 /* String+MD5.swift */; };
+		E736C9AC1C522BE700910933 /* ThreadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEB21C4FDC2900696039 /* ThreadHelper.swift */; };
+		E736C9AD1C522BE700910933 /* UIImage+ImageKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEB31C4FDC2900696039 /* UIImage+ImageKit.swift */; };
+		E736C9AE1C522BF000910933 /* PHProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEC81C4FDC3500696039 /* PHProgressView.swift */; };
+		E736C9B21C522E6F00910933 /* UIView+ImageKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729DEB41C4FDC2900696039 /* UIView+ImageKit.swift */; };
+		E736C9B41C522FA900910933 /* kittyGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = E736C9B31C522FA900910933 /* kittyGif.gif */; };
+		E736C9B61C522FE500910933 /* kittyGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = E736C9B31C522FA900910933 /* kittyGif.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,9 +76,19 @@
 			remoteGlobalIDString = E729DE7B1C4FD93800696039;
 			remoteInfo = PHImageKit;
 		};
+		E736C9B01C522CDF00910933 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E729DE731C4FD93800696039 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E729DE991C4FDA3F00696039;
+			remoteInfo = PHImageKitDemo;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D4FBF90B69D88D7FC18ADEC /* Pods-PHImageKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PHImageKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PHImageKitTests/Pods-PHImageKitTests.release.xcconfig"; sourceTree = "<group>"; };
+		957186C3C124BFEE5BA122E9 /* libPods-PHImageKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PHImageKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3D223C662FFB479EC4792C2 /* Pods-PHImageKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PHImageKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PHImageKitTests/Pods-PHImageKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E729DE7C1C4FD93800696039 /* PHImageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PHImageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E729DE7F1C4FD93800696039 /* PHImageKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PHImageKit.h; sourceTree = "<group>"; };
 		E729DE811C4FD93800696039 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,28 +109,29 @@
 		E729DEB21C4FDC2900696039 /* ThreadHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadHelper.swift; sourceTree = "<group>"; };
 		E729DEB31C4FDC2900696039 /* UIImage+ImageKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ImageKit.swift"; sourceTree = "<group>"; };
 		E729DEB41C4FDC2900696039 /* UIView+ImageKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ImageKit.swift"; sourceTree = "<group>"; };
-		E729DEBD1C4FDC3500696039 /* IKAnimatedImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKAnimatedImage.swift; sourceTree = "<group>"; };
-		E729DEBE1C4FDC3500696039 /* IKCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKCache.swift; sourceTree = "<group>"; };
-		E729DEBF1C4FDC3500696039 /* IKCacheProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKCacheProtocol.swift; sourceTree = "<group>"; };
-		E729DEC01C4FDC3500696039 /* IKDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKDownload.swift; sourceTree = "<group>"; };
-		E729DEC11C4FDC3500696039 /* IKDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKDownloader.swift; sourceTree = "<group>"; };
-		E729DEC21C4FDC3500696039 /* IKFileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKFileCache.swift; sourceTree = "<group>"; };
-		E729DEC31C4FDC3500696039 /* IKImageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKImageObject.swift; sourceTree = "<group>"; };
-		E729DEC41C4FDC3500696039 /* IKImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKImageView.swift; sourceTree = "<group>"; };
-		E729DEC51C4FDC3500696039 /* IKImageViewProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKImageViewProxy.swift; sourceTree = "<group>"; };
-		E729DEC61C4FDC3500696039 /* IKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKManager.swift; sourceTree = "<group>"; };
-		E729DEC71C4FDC3500696039 /* IKMemoryCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKMemoryCache.swift; sourceTree = "<group>"; };
-		E729DEC81C4FDC3500696039 /* IKProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKProgressView.swift; sourceTree = "<group>"; };
+		E729DEBD1C4FDC3500696039 /* PHAnimatedImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHAnimatedImage.swift; sourceTree = "<group>"; };
+		E729DEBE1C4FDC3500696039 /* PHCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHCache.swift; sourceTree = "<group>"; };
+		E729DEBF1C4FDC3500696039 /* PHCacheProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHCacheProtocol.swift; sourceTree = "<group>"; };
+		E729DEC01C4FDC3500696039 /* PHDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHDownload.swift; sourceTree = "<group>"; };
+		E729DEC11C4FDC3500696039 /* PHDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHDownloader.swift; sourceTree = "<group>"; };
+		E729DEC21C4FDC3500696039 /* PHFileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHFileCache.swift; sourceTree = "<group>"; };
+		E729DEC31C4FDC3500696039 /* PHImageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHImageObject.swift; sourceTree = "<group>"; };
+		E729DEC41C4FDC3500696039 /* PHImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHImageView.swift; sourceTree = "<group>"; };
+		E729DEC51C4FDC3500696039 /* PHImageViewProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHImageViewProxy.swift; sourceTree = "<group>"; };
+		E729DEC61C4FDC3500696039 /* PHManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHManager.swift; sourceTree = "<group>"; };
+		E729DEC71C4FDC3500696039 /* PHMemoryCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHMemoryCache.swift; sourceTree = "<group>"; };
+		E729DEC81C4FDC3500696039 /* PHProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHProgressView.swift; sourceTree = "<group>"; };
 		E729DED51C4FDCD800696039 /* PHImageKitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PHImageKitTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		E729DED61C4FDCD900696039 /* IKAnimatedImageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKAnimatedImageTests.swift; sourceTree = "<group>"; };
-		E729DED71C4FDCD900696039 /* IKCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKCacheTests.swift; sourceTree = "<group>"; };
-		E729DED81C4FDCD900696039 /* IKDonwloaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKDonwloaderTests.swift; sourceTree = "<group>"; };
-		E729DED91C4FDCD900696039 /* IKFileCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKFileCacheTests.swift; sourceTree = "<group>"; };
-		E729DEDA1C4FDCD900696039 /* IKImageObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKImageObjectTests.swift; sourceTree = "<group>"; };
-		E729DEDB1C4FDCD900696039 /* IKManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKManagerTests.swift; sourceTree = "<group>"; };
-		E729DEDC1C4FDCD900696039 /* IKMemoryCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKMemoryCacheTests.swift; sourceTree = "<group>"; };
+		E729DED61C4FDCD900696039 /* PHAnimatedImageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHAnimatedImageTests.swift; sourceTree = "<group>"; };
+		E729DED71C4FDCD900696039 /* PHCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHCacheTests.swift; sourceTree = "<group>"; };
+		E729DED81C4FDCD900696039 /* PHDonwloaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHDonwloaderTests.swift; sourceTree = "<group>"; };
+		E729DED91C4FDCD900696039 /* PHFileCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHFileCacheTests.swift; sourceTree = "<group>"; };
+		E729DEDA1C4FDCD900696039 /* PHImageObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHImageObjectTests.swift; sourceTree = "<group>"; };
+		E729DEDB1C4FDCD900696039 /* PHManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHManagerTests.swift; sourceTree = "<group>"; };
+		E729DEDC1C4FDCD900696039 /* PHMemoryCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHMemoryCacheTests.swift; sourceTree = "<group>"; };
 		E729DEDD1C4FDCD900696039 /* NSURLImageKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLImageKitTests.swift; sourceTree = "<group>"; };
 		E729DEDE1C4FDCD900696039 /* XCTestCase+ImageKitHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+ImageKitHelpers.swift"; sourceTree = "<group>"; };
+		E736C9B31C522FA900910933 /* kittyGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = kittyGif.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E729DE871C4FD93800696039 /* PHImageKit.framework in Frameworks */,
+				3F6A5044F8169C03F08146CE /* libPods-PHImageKitTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,12 +161,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4B44468685C3CB47521E184 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C3D223C662FFB479EC4792C2 /* Pods-PHImageKitTests.debug.xcconfig */,
+				6D4FBF90B69D88D7FC18ADEC /* Pods-PHImageKitTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CAC57868DC86E60D877536F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				957186C3C124BFEE5BA122E9 /* libPods-PHImageKitTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E729DE721C4FD93800696039 = {
 			isa = PBXGroup;
 			children = (
+				CAC57868DC86E60D877536F1 /* Frameworks */,
 				E729DE7E1C4FD93800696039 /* PHImageKit */,
-				E729DE8A1C4FD93800696039 /* PHImageKitTests */,
 				E729DE9B1C4FDA3F00696039 /* PHImageKitDemo */,
+				E729DE8A1C4FD93800696039 /* PHImageKitTests */,
+				A4B44468685C3CB47521E184 /* Pods */,
 				E729DE7D1C4FD93800696039 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -150,20 +204,20 @@
 			isa = PBXGroup;
 			children = (
 				E729DEAC1C4FDC1100696039 /* Categories */,
-				E729DE7F1C4FD93800696039 /* PHImageKit.h */,
-				E729DEBD1C4FDC3500696039 /* IKAnimatedImage.swift */,
-				E729DEBE1C4FDC3500696039 /* IKCache.swift */,
-				E729DEBF1C4FDC3500696039 /* IKCacheProtocol.swift */,
-				E729DEC01C4FDC3500696039 /* IKDownload.swift */,
-				E729DEC11C4FDC3500696039 /* IKDownloader.swift */,
-				E729DEC21C4FDC3500696039 /* IKFileCache.swift */,
-				E729DEC31C4FDC3500696039 /* IKImageObject.swift */,
-				E729DEC41C4FDC3500696039 /* IKImageView.swift */,
-				E729DEC51C4FDC3500696039 /* IKImageViewProxy.swift */,
-				E729DEC61C4FDC3500696039 /* IKManager.swift */,
-				E729DEC71C4FDC3500696039 /* IKMemoryCache.swift */,
-				E729DEC81C4FDC3500696039 /* IKProgressView.swift */,
 				E729DE811C4FD93800696039 /* Info.plist */,
+				E729DEBD1C4FDC3500696039 /* PHAnimatedImage.swift */,
+				E729DEBE1C4FDC3500696039 /* PHCache.swift */,
+				E729DEBF1C4FDC3500696039 /* PHCacheProtocol.swift */,
+				E729DEC01C4FDC3500696039 /* PHDownload.swift */,
+				E729DEC11C4FDC3500696039 /* PHDownloader.swift */,
+				E729DEC21C4FDC3500696039 /* PHFileCache.swift */,
+				E729DE7F1C4FD93800696039 /* PHImageKit.h */,
+				E729DEC31C4FDC3500696039 /* PHImageObject.swift */,
+				E729DEC41C4FDC3500696039 /* PHImageView.swift */,
+				E729DEC51C4FDC3500696039 /* PHImageViewProxy.swift */,
+				E729DEC61C4FDC3500696039 /* PHManager.swift */,
+				E729DEC71C4FDC3500696039 /* PHMemoryCache.swift */,
+				E729DEC81C4FDC3500696039 /* PHProgressView.swift */,
 			);
 			path = PHImageKit;
 			sourceTree = "<group>";
@@ -171,17 +225,16 @@
 		E729DE8A1C4FD93800696039 /* PHImageKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				E729DED61C4FDCD900696039 /* IKAnimatedImageTests.swift */,
-				E729DED71C4FDCD900696039 /* IKCacheTests.swift */,
-				E729DED81C4FDCD900696039 /* IKDonwloaderTests.swift */,
-				E729DED91C4FDCD900696039 /* IKFileCacheTests.swift */,
-				E729DEDA1C4FDCD900696039 /* IKImageObjectTests.swift */,
-				E729DEDB1C4FDCD900696039 /* IKManagerTests.swift */,
-				E729DEDC1C4FDCD900696039 /* IKMemoryCacheTests.swift */,
+				E736C9B71C52300000910933 /* Supporting Files */,
 				E729DEDD1C4FDCD900696039 /* NSURLImageKitTests.swift */,
+				E729DED61C4FDCD900696039 /* PHAnimatedImageTests.swift */,
+				E729DED71C4FDCD900696039 /* PHCacheTests.swift */,
+				E729DED81C4FDCD900696039 /* PHDonwloaderTests.swift */,
+				E729DED91C4FDCD900696039 /* PHFileCacheTests.swift */,
+				E729DEDA1C4FDCD900696039 /* PHImageObjectTests.swift */,
+				E729DEDB1C4FDCD900696039 /* PHManagerTests.swift */,
+				E729DEDC1C4FDCD900696039 /* PHMemoryCacheTests.swift */,
 				E729DEDE1C4FDCD900696039 /* XCTestCase+ImageKitHelpers.swift */,
-				E729DE8D1C4FD93800696039 /* Info.plist */,
-				E729DED51C4FDCD800696039 /* PHImageKitTests-Bridging-Header.h */,
 			);
 			path = PHImageKitTests;
 			sourceTree = "<group>";
@@ -190,11 +243,11 @@
 			isa = PBXGroup;
 			children = (
 				E729DE9C1C4FDA3F00696039 /* AppDelegate.swift */,
-				E729DE9E1C4FDA3F00696039 /* ViewController.swift */,
-				E729DEA01C4FDA3F00696039 /* Main.storyboard */,
 				E729DEA31C4FDA3F00696039 /* Assets.xcassets */,
-				E729DEA51C4FDA3F00696039 /* LaunchScreen.storyboard */,
 				E729DEA81C4FDA3F00696039 /* Info.plist */,
+				E729DEA51C4FDA3F00696039 /* LaunchScreen.storyboard */,
+				E729DEA01C4FDA3F00696039 /* Main.storyboard */,
+				E729DE9E1C4FDA3F00696039 /* ViewController.swift */,
 			);
 			path = PHImageKitDemo;
 			sourceTree = "<group>";
@@ -211,7 +264,17 @@
 				E729DEB31C4FDC2900696039 /* UIImage+ImageKit.swift */,
 				E729DEB41C4FDC2900696039 /* UIView+ImageKit.swift */,
 			);
-			name = Categories;
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		E736C9B71C52300000910933 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E729DE8D1C4FD93800696039 /* Info.plist */,
+				E729DED51C4FDCD800696039 /* PHImageKitTests-Bridging-Header.h */,
+				E736C9B31C522FA900910933 /* kittyGif.gif */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,14 +313,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E729DE931C4FD93800696039 /* Build configuration list for PBXNativeTarget "PHImageKitTests" */;
 			buildPhases = (
+				9D33003D9161572CF298AFDA /* Check Pods Manifest.lock */,
 				E729DE821C4FD93800696039 /* Sources */,
 				E729DE831C4FD93800696039 /* Frameworks */,
 				E729DE841C4FD93800696039 /* Resources */,
+				1A4BE3D30D6346C86EC06CDD /* Embed Pods Frameworks */,
+				49007E376C9FB98FF32167A9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				E729DE891C4FD93800696039 /* PBXTargetDependency */,
+				E736C9B11C522CDF00910933 /* PBXTargetDependency */,
 			);
 			name = PHImageKitTests;
 			productName = PHImageKitTests;
@@ -296,6 +363,7 @@
 					};
 					E729DE851C4FD93800696039 = {
 						CreatedOnToolsVersion = 7.2;
+						TestTargetID = E729DE991C4FDA3F00696039;
 					};
 					E729DE991C4FDA3F00696039 = {
 						CreatedOnToolsVersion = 7.2;
@@ -334,6 +402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E736C9B41C522FA900910933 /* kittyGif.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,10 +413,59 @@
 				E729DEA71C4FDA3F00696039 /* LaunchScreen.storyboard in Resources */,
 				E729DEA41C4FDA3F00696039 /* Assets.xcassets in Resources */,
 				E729DEA21C4FDA3F00696039 /* Main.storyboard in Resources */,
+				E736C9B61C522FE500910933 /* kittyGif.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1A4BE3D30D6346C86EC06CDD /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PHImageKitTests/Pods-PHImageKitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49007E376C9FB98FF32167A9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PHImageKitTests/Pods-PHImageKitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D33003D9161572CF298AFDA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E729DE771C4FD93800696039 /* Sources */ = {
@@ -356,24 +474,24 @@
 			files = (
 				E729DEB71C4FDC2900696039 /* NSError+ImageKit.swift in Sources */,
 				E729DEB81C4FDC2900696039 /* NSURL+ImageKit.swift in Sources */,
-				E729DEC91C4FDC3500696039 /* IKAnimatedImage.swift in Sources */,
-				E729DED41C4FDC3500696039 /* IKProgressView.swift in Sources */,
-				E729DECF1C4FDC3500696039 /* IKImageObject.swift in Sources */,
-				E729DECC1C4FDC3500696039 /* IKDownload.swift in Sources */,
-				E729DED21C4FDC3500696039 /* IKManager.swift in Sources */,
+				E729DEC91C4FDC3500696039 /* PHAnimatedImage.swift in Sources */,
+				E729DED41C4FDC3500696039 /* PHProgressView.swift in Sources */,
+				E729DECF1C4FDC3500696039 /* PHImageObject.swift in Sources */,
+				E729DECC1C4FDC3500696039 /* PHDownload.swift in Sources */,
+				E729DED21C4FDC3500696039 /* PHManager.swift in Sources */,
 				E729DEBB1C4FDC2900696039 /* UIImage+ImageKit.swift in Sources */,
-				E729DECB1C4FDC3500696039 /* IKCacheProtocol.swift in Sources */,
-				E729DECE1C4FDC3500696039 /* IKFileCache.swift in Sources */,
-				E729DECA1C4FDC3500696039 /* IKCache.swift in Sources */,
-				E729DED11C4FDC3500696039 /* IKImageViewProxy.swift in Sources */,
+				E729DECB1C4FDC3500696039 /* PHCacheProtocol.swift in Sources */,
+				E729DECE1C4FDC3500696039 /* PHFileCache.swift in Sources */,
+				E729DECA1C4FDC3500696039 /* PHCache.swift in Sources */,
+				E729DED11C4FDC3500696039 /* PHImageViewProxy.swift in Sources */,
 				E729DEB91C4FDC2900696039 /* String+MD5.swift in Sources */,
 				E729DEB51C4FDC2900696039 /* NSData+ImageFormat.swift in Sources */,
 				E729DEB61C4FDC2900696039 /* NSDate+ImageKit.swift in Sources */,
-				E729DECD1C4FDC3500696039 /* IKDownloader.swift in Sources */,
+				E729DECD1C4FDC3500696039 /* PHDownloader.swift in Sources */,
 				E729DEBA1C4FDC2900696039 /* ThreadHelper.swift in Sources */,
-				E729DED01C4FDC3500696039 /* IKImageView.swift in Sources */,
+				E729DED01C4FDC3500696039 /* PHImageView.swift in Sources */,
 				E729DEBC1C4FDC2900696039 /* UIView+ImageKit.swift in Sources */,
-				E729DED31C4FDC3500696039 /* IKMemoryCache.swift in Sources */,
+				E729DED31C4FDC3500696039 /* PHMemoryCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,15 +499,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E729DEE21C4FDCD900696039 /* IKFileCacheTests.swift in Sources */,
-				E729DEE11C4FDCD900696039 /* IKDonwloaderTests.swift in Sources */,
-				E729DEE31C4FDCD900696039 /* IKImageObjectTests.swift in Sources */,
-				E729DEE51C4FDCD900696039 /* IKMemoryCacheTests.swift in Sources */,
-				E729DEE01C4FDCD900696039 /* IKCacheTests.swift in Sources */,
+				E736C9B21C522E6F00910933 /* UIView+ImageKit.swift in Sources */,
+				E729DEE21C4FDCD900696039 /* PHFileCacheTests.swift in Sources */,
+				E736C9A51C522BB500910933 /* PHCacheProtocol.swift in Sources */,
+				E729DEE11C4FDCD900696039 /* PHDonwloaderTests.swift in Sources */,
+				E736C9AE1C522BF000910933 /* PHProgressView.swift in Sources */,
+				E736C9A71C522BE700910933 /* NSData+ImageFormat.swift in Sources */,
+				E729DEE31C4FDCD900696039 /* PHImageObjectTests.swift in Sources */,
+				E736C9A61C522BB700910933 /* PHCache.swift in Sources */,
+				E736C9A11C522BAC00910933 /* PHImageObject.swift in Sources */,
+				E736C9AC1C522BE700910933 /* ThreadHelper.swift in Sources */,
+				E736C9AB1C522BE700910933 /* String+MD5.swift in Sources */,
+				E736C9A21C522BAE00910933 /* PHFileCache.swift in Sources */,
+				E736C9A31C522BB100910933 /* PHDownloader.swift in Sources */,
+				E736C9AA1C522BE700910933 /* NSURL+ImageKit.swift in Sources */,
+				E729DEE51C4FDCD900696039 /* PHMemoryCacheTests.swift in Sources */,
+				E729DEE01C4FDCD900696039 /* PHCacheTests.swift in Sources */,
+				E736C99E1C522BA300910933 /* PHManager.swift in Sources */,
+				E736C9AD1C522BE700910933 /* UIImage+ImageKit.swift in Sources */,
+				E736C9A01C522BA900910933 /* PHImageView.swift in Sources */,
+				E736C9A91C522BE700910933 /* NSError+ImageKit.swift in Sources */,
 				E729DEE61C4FDCD900696039 /* NSURLImageKitTests.swift in Sources */,
+				E736C99F1C522BA600910933 /* PHImageViewProxy.swift in Sources */,
+				E736C99D1C522BA100910933 /* PHMemoryCache.swift in Sources */,
+				E736C99C1C522B9100910933 /* PHAnimatedImage.swift in Sources */,
 				E729DEE71C4FDCD900696039 /* XCTestCase+ImageKitHelpers.swift in Sources */,
-				E729DEDF1C4FDCD900696039 /* IKAnimatedImageTests.swift in Sources */,
-				E729DEE41C4FDCD900696039 /* IKManagerTests.swift in Sources */,
+				E736C9A41C522BB300910933 /* PHDownload.swift in Sources */,
+				E729DEDF1C4FDCD900696039 /* PHAnimatedImageTests.swift in Sources */,
+				E729DEE41C4FDCD900696039 /* PHManagerTests.swift in Sources */,
+				E736C9A81C522BE700910933 /* NSDate+ImageKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +548,11 @@
 			target = E729DE7B1C4FD93800696039 /* PHImageKit */;
 			targetProxy = E729DE881C4FD93800696039 /* PBXContainerItemProxy */;
 		};
+		E736C9B11C522CDF00910933 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E729DE991C4FDA3F00696039 /* PHImageKitDemo */;
+			targetProxy = E736C9B01C522CDF00910933 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -419,6 +562,7 @@
 				E729DEA11C4FDA3F00696039 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		E729DEA51C4FDA3F00696039 /* LaunchScreen.storyboard */ = {
@@ -427,6 +571,7 @@
 				E729DEA61C4FDA3F00696039 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -558,26 +703,30 @@
 		};
 		E729DE941C4FD93800696039 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3D223C662FFB479EC4792C2 /* Pods-PHImageKitTests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = PHImageKitTests/Info.plist;
+				INFOPLIST_FILE = "PHImageKitTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ProductHunt.PHImageKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "PHImageKitTests/PHImageKitTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/PHImageKitTests/Supporting Files/PHImageKitTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PHImageKitDemo.app/PHImageKitDemo";
 			};
 			name = Debug;
 		};
 		E729DE951C4FD93800696039 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D4FBF90B69D88D7FC18ADEC /* Pods-PHImageKitTests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = PHImageKitTests/Info.plist;
+				INFOPLIST_FILE = "PHImageKitTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ProductHunt.PHImageKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "PHImageKitTests/PHImageKitTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/PHImageKitTests/Supporting Files/PHImageKitTests-Bridging-Header.h";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PHImageKitDemo.app/PHImageKitDemo";
 			};
 			name = Release;
 		};

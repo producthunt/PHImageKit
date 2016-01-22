@@ -1,5 +1,5 @@
 //
-//  IKDownloadObject.swift
+//  PHDownloadObject.swift
 //  PHImageKit
 //
 //  Created by Vlado on 12/6/15.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class IKDownload {
+class PHDownload {
 
-    private var callbacks = [String:IKCallback]()
+    private var callbacks = [String:PHCallback]()
 
     private var task : NSURLSessionDataTask
     private var data = NSMutableData()
@@ -19,7 +19,7 @@ class IKDownload {
         self.task = task
     }
 
-    func addCallback(callback:IKCallback) -> String {
+    func addCallback(callback:PHCallback) -> String {
         let key = "\(task.currentRequest?.URL?.absoluteString ?? "Unknown")-\(NSDate().timeIntervalSince1970)";
 
         callbacks[key] = callback;
@@ -34,7 +34,7 @@ class IKDownload {
     }
 
     func success() {
-        let imageObject = IKImageObject(data: data)
+        let imageObject = PHImageObject(data: data)
         let error : NSError? = imageObject != nil ? nil : NSError.ik_invalidDataError()
 
         for (_, callback) in callbacks {

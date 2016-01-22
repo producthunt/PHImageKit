@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class IKImageView: UIImageView {
+public class PHImageView: UIImageView {
 
     public var url : NSURL? {
         didSet {
@@ -18,7 +18,7 @@ public class IKImageView: UIImageView {
                 }
 
                 if let downloadKey = downloadKey {
-                    IKManager.sharedInstance.cancelImageRetrieve(oldValue, key: downloadKey)
+                    PHManager.sharedInstance.cancelImageRetrieve(oldValue, key: downloadKey)
                 }
             }
 
@@ -40,14 +40,14 @@ public class IKImageView: UIImageView {
         }
         didSet {
             if showProgress {
-                progressView = IKProgressView.progressInSuperview(self)
+                progressView = PHProgressView.progressInSuperview(self)
             }
         }
     }
 
     public var animatedImageTransition = true
 
-    public var animatedImage: IKAnimatedImage! {
+    public var animatedImage: PHAnimatedImage! {
         didSet {
             guard let animatedImage = animatedImage else {
                 stopAnimating()
@@ -80,7 +80,7 @@ public class IKImageView: UIImageView {
 
     private var downloadKey : String?
 
-    private var progressView : IKProgressView?
+    private var progressView : PHProgressView?
     private var currentFrame: UIImage!
     private var currentFrameIndex = 0
 
@@ -179,7 +179,7 @@ public class IKImageView: UIImageView {
         }
 
         if displayLink == nil {
-            let weakProxy : IKImageViewProxy = IKImageViewProxy(weakProxyForObject: self)
+            let weakProxy : PHImageViewProxy = PHImageViewProxy(weakProxyForObject: self)
             displayLink = CADisplayLink(target: weakProxy, selector: "displayDidRefresh:")
 
             let mode : String = {
@@ -231,7 +231,7 @@ public class IKImageView: UIImageView {
     //MARK: Private
 
     private func loadImage(url: NSURL) {
-        downloadKey = IKManager.sharedInstance.imageWithUrl(url, progress: { [weak self] (percent) in
+        downloadKey = PHManager.sharedInstance.imageWithUrl(url, progress: { [weak self] (percent) in
 
             self?.setProgress(percent)
 
@@ -251,7 +251,7 @@ public class IKImageView: UIImageView {
         })
     }
 
-    private func setImage(object: IKImageObject) {
+    private func setImage(object: PHImageObject) {
         ik_dispatch_main_queue {
             if !self.animatedImageTransition {
                 super.image = object.image

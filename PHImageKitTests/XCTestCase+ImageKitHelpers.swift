@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import PHImageKit
+
 extension XCTestCase {
 
     func ik_expectation(description: String, fulfill: (expectation: XCTestExpectation) -> Void) {

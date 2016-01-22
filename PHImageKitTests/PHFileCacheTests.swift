@@ -1,5 +1,5 @@
 //
-//  IKFileCacheTests.swift
+//  PHFileCacheTests.swift
 //  PHImageKit
 //
 //  Created by Vlado on 12/7/15.
@@ -8,9 +8,11 @@
 
 import XCTest
 
-class IKFileCacheTests: XCTestCase {
+@testable import PHImageKit
 
-    let cache = IKFileCache()
+class PHFileCacheTests: XCTestCase {
+
+    let cache = PHFileCache()
     let testPath = "https://example.com"
 
     override func tearDown() {
@@ -19,7 +21,7 @@ class IKFileCacheTests: XCTestCase {
     }
 
     func testThatItCachesImage() {
-        let object = IKImageObject(data: ik_imageData())!
+        let object = PHImageObject(data: ik_imageData())!
 
         let key = NSURL(string: testPath)!.ik_cacheKey()
 
@@ -32,7 +34,7 @@ class IKFileCacheTests: XCTestCase {
     }
 
     func testThatItCachesGif() {
-        let object = IKImageObject(data: ik_gifData())!
+        let object = PHImageObject(data: ik_gifData())!
 
         let key = NSURL(string: testPath)!.ik_cacheKey()
 
@@ -45,7 +47,7 @@ class IKFileCacheTests: XCTestCase {
     }
 
     func testThatItGetsCachedImage() {
-        let object = IKImageObject(data: ik_imageData())!
+        let object = PHImageObject(data: ik_imageData())!
         let key = NSURL(string: testPath)!.ik_cacheKey()
 
         ik_expectation("File cache worker expectation") { (expectation) -> Void in
@@ -61,7 +63,7 @@ class IKFileCacheTests: XCTestCase {
     }
 
     func testThatItGetsCachedGif() {
-        let object = IKImageObject(data: ik_gifData())!
+        let object = PHImageObject(data: ik_gifData())!
         let key = NSURL(string: testPath)!.ik_cacheKey()
 
         ik_expectation("File cache worker expectation") { (expectation) -> Void in
@@ -77,7 +79,7 @@ class IKFileCacheTests: XCTestCase {
     }
 
     func testThatItRemovesCachedImage() {
-        let object = IKImageObject(data: ik_imageData())!
+        let object = PHImageObject(data: ik_imageData())!
         let key = NSURL(string: testPath)!.ik_cacheKey()
 
         ik_expectation("File cache worker expectation") { (expectation) -> Void in
@@ -94,7 +96,7 @@ class IKFileCacheTests: XCTestCase {
     }
 
     func testThatItRemovesCachedGif() {
-        let object = IKImageObject(data: ik_gifData())!
+        let object = PHImageObject(data: ik_gifData())!
         let key = NSURL(string: testPath)!.ik_cacheKey()
 
         ik_expectation("File cache worker expectation") { (expectation) -> Void in
@@ -118,7 +120,7 @@ class IKFileCacheTests: XCTestCase {
             for i in 0...5 {
                 dispatch_group_enter(group)
                 let image = self.ik_createImage(UIColor.whiteColor(), size: CGSize(width: 1+i, height: 1+1))
-                let object = IKImageObject(data: UIImagePNGRepresentation(image))!
+                let object = PHImageObject(data: UIImagePNGRepresentation(image))!
                 let key = NSURL(string: "https://example.com" + "\(i)")!.ik_cacheKey()
 
                 keys.append(key)

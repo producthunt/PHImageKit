@@ -1,5 +1,5 @@
 //
-//  IKCache.swift
+//  PHCache.swift
 //  PHImageKit
 //
 //  Created by Vlado on 12/6/15.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class IKCache: NSObject {
+class PHCache: NSObject {
 
-    private let memoryCache = IKMemoryCache()
-    private let fileCache   = IKFileCache()
+    private let memoryCache = PHMemoryCache()
+    private let fileCache   = PHFileCache()
 
     override init() {
         super.init()
@@ -22,14 +22,14 @@ class IKCache: NSObject {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
-    func saveImage(imageObject: IKImageObject, url: NSURL) {
+    func saveImage(imageObject: PHImageObject, url: NSURL) {
         let key = cacheKey(url)
 
         memoryCache.saveImageObject(imageObject, key: key)
         fileCache.saveImageObject(imageObject, key: key)
     }
 
-    func getImage(url: NSURL, completion: IKManagerCompletion) {
+    func getImage(url: NSURL, completion: PHManagerCompletion) {
         let key = cacheKey(url)
 
         if let object = memoryCache.getImageObject(key) {
@@ -51,7 +51,7 @@ class IKCache: NSObject {
         return memoryCache.isCached(key) || fileCache.isCached(key)
     }
 
-    func removeImage(url: NSURL, completion: IKVoidCompletion? = nil) {
+    func removeImage(url: NSURL, completion: PHVoidCompletion? = nil) {
         let key = cacheKey(url)
 
         memoryCache.removeImageObject(key)
@@ -63,7 +63,7 @@ class IKCache: NSObject {
         memoryCache.clear()
     }
 
-    func clearFileChache(completion: IKVoidCompletion?) {
+    func clearFileChache(completion: PHVoidCompletion?) {
         fileCache.clear(completion)
     }
 

@@ -1,5 +1,5 @@
 //
-//  IKFileCache.swift
+//  PHFileCache.swift
 //  PHImageKit
 //
 //  Created by Vlado on 12/6/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IKFileCache: NSObject, IKCacheProtocol {
+class PHFileCache: NSObject, PHCacheProtocol {
 
     private let ioQueue = dispatch_queue_create(imageKitDomain  + "ioQueue", DISPATCH_QUEUE_SERIAL)
     private var fileManager = NSFileManager()
@@ -23,7 +23,7 @@ class IKFileCache: NSObject, IKCacheProtocol {
         createDirectoryIfNeeded()
     }
 
-    func saveImageObject(object: IKImageObject, key: String, completion: IKVoidCompletion? = nil) {
+    func saveImageObject(object: PHImageObject, key: String, completion: PHVoidCompletion? = nil) {
         ioDispatch {
             if let data = object.data {
                 self.fileManager.createFileAtPath(self.pathFromKey(key), contents: data, attributes: nil)
@@ -35,19 +35,19 @@ class IKFileCache: NSObject, IKCacheProtocol {
         }
     }
 
-    func getImageObject(key: String) -> IKImageObject? {
+    func getImageObject(key: String) -> PHImageObject? {
         guard let data = NSData(contentsOfFile: pathFromKey(key)) else {
             return nil
         }
 
-        return IKImageObject(data: data)
+        return PHImageObject(data: data)
     }
 
     func isCached(key: String) -> Bool {
         return fileManager.fileExistsAtPath(pathFromKey(key))
     }
 
-    func removeImageObject(key: String, completion: IKVoidCompletion?) {
+    func removeImageObject(key: String, completion: PHVoidCompletion?) {
         ioDispatch {
             do {
                 try self.fileManager.removeItemAtPath(self.pathFromKey(key))
@@ -57,7 +57,7 @@ class IKFileCache: NSObject, IKCacheProtocol {
         }
     }
 
-    func clear(completion: IKVoidCompletion? = nil) {
+    func clear(completion: PHVoidCompletion? = nil) {
         ioDispatch { () -> Void in
             do {
                 try self.fileManager.removeItemAtPath(self.directory)
@@ -69,7 +69,7 @@ class IKFileCache: NSObject, IKCacheProtocol {
         }
     }
 
-    func clearExpiredImages(completion: IKVoidCompletion? = nil) {
+    func clearExpiredImages(completion: PHVoidCompletion? = nil) {
         ioDispatch {
             let targetSize: UInt = self.maxDiskCacheSize/2
             var totalSize: UInt = 0
@@ -92,7 +92,7 @@ class IKFileCache: NSObject, IKCacheProtocol {
         dispatch_async(ioQueue, operation)
     }
 
-    private func callCompletion(completion: IKVoidCompletion? = nil) {
+    private func callCompletion(completion: PHVoidCompletion? = nil) {
         if let completion = completion {
             completion()
         }
@@ -123,9 +123,9 @@ class IKFileCache: NSObject, IKCacheProtocol {
         return []
     }
 
-    private func getCacheObjects() -> [IKFileCacheObject] {
-        return getFiles().map { (url) -> IKFileCacheObject in
-            let object = IKFileCacheObject()
+    private func getCacheObjects() -> [PHFileCacheObject] {
+        return getFiles().map { (url) -> PHFileCacheObject in
+            let object = PHFileCacheObject()
 
             object.url = url
             object.modificationDate = self.getResourceValue(url, key: NSURLContentModificationDateKey, defaultValue: NSDate())
@@ -150,7 +150,7 @@ class IKFileCache: NSObject, IKCacheProtocol {
 
 }
 
-class IKFileCacheObject {
+class PHFileCacheObject {
     
     var url : NSURL!
     var size : UInt = 0

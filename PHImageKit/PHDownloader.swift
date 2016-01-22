@@ -1,5 +1,5 @@
 //
-//  IKDownloader.swift
+//  PHDownloader.swift
 //  PHImageKit
 //
 //  Created by Vlado on 12/6/15.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-typealias IKCompletion  = (image: IKImageObject?, error: NSError?) -> Void
-typealias IKCallback    = (progress: IKProgressCompletion , completion: IKCompletion)
+typealias PHCompletion  = (image: PHImageObject?, error: NSError?) -> Void
+typealias PHCallback    = (progress: PHProgressCompletion , completion: PHCompletion)
 
-class IKDownloader : NSObject {
+class PHDownloader : NSObject {
 
-    private var fetchObjects = [NSURL : IKDownload]()
+    private var fetchObjects = [NSURL : PHDownload]()
     private let timeout : NSTimeInterval = 15
     private let barrierQueue: dispatch_queue_t = dispatch_queue_create(imageKitDomain + ".barrierQueue", DISPATCH_QUEUE_CONCURRENT)
     private let processQueue: dispatch_queue_t = dispatch_queue_create(imageKitDomain + ".processQueue", DISPATCH_QUEUE_CONCURRENT)
 
-    func download(URL: NSURL, progress: IKProgressCompletion, completion: IKCompletion) -> String? {
+    func download(URL: NSURL, progress: PHProgressCompletion, completion: PHCompletion) -> String? {
         if !URL.ik_isValid() {
             completion(image: nil, error: NSError.ik_invalidUrlError())
             return nil
@@ -27,7 +27,7 @@ class IKDownloader : NSObject {
         var key:String?
 
         barrierDispatch {
-            let fetchObject = self.fetchObjects[URL] ?? IKDownload(task: self.createTask(URL))
+            let fetchObject = self.fetchObjects[URL] ?? PHDownload(task: self.createTask(URL))
 
             key = fetchObject.addCallback((progress: progress, completion: completion))
 
@@ -58,8 +58,8 @@ class IKDownloader : NSObject {
         return task
     }
 
-    private func fetchObjectForKey(key: NSURL) -> IKDownload? {
-        var object : IKDownload?
+    private func fetchObjectForKey(key: NSURL) -> PHDownload? {
+        var object : PHDownload?
 
         barrierDispatch {
             object = self.fetchObjects[key]
@@ -83,7 +83,7 @@ class IKDownloader : NSObject {
     }
 }
 
-extension IKDownloader : NSURLSessionDataDelegate {
+extension PHDownloader : NSURLSessionDataDelegate {
 
     func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
         if let URL = dataTask.originalRequest?.URL, fetchObject = fetchObjectForKey(URL) {

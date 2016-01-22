@@ -1,5 +1,5 @@
 //
-//  IKCacheTests.swift
+//  PHCacheTests.swift
 //  PHImageKit
 //
 //  Created by Vlado on 12/7/15.
@@ -8,9 +8,11 @@
 
 import XCTest
 
-class IKCacheTests: XCTestCase {
+@testable import PHImageKit
 
-    let cache = IKCache()
+class PHCacheTests: XCTestCase {
+
+    let cache = PHCache()
     let baseURl = NSURL(string: "http://producthunt.com/example.jpg")!
     
     override func tearDown() {
@@ -22,7 +24,7 @@ class IKCacheTests: XCTestCase {
     func testThatItClearMemoryCacheIfMemoryWarning() {
         let image   = ik_createImage(UIColor.whiteColor(), size: CGSize(width: 10, height: 10))
 
-        let object = IKImageObject(data: UIImagePNGRepresentation(image))!
+        let object = PHImageObject(data: UIImagePNGRepresentation(image))!
 
         cache.saveImage(object, url: baseURl)
 

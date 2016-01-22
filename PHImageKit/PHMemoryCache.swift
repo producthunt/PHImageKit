@@ -1,5 +1,5 @@
 //
-//  IKMemoryCache.swift
+//  PHMemoryCache.swift
 //  PHImageKit
 //
 //  Created by Vlado on 12/6/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IKMemoryCache: NSCache, IKCacheProtocol {
+class PHMemoryCache: NSCache, PHCacheProtocol {
 
     override init() {
         super.init()
@@ -22,29 +22,29 @@ class IKMemoryCache: NSCache, IKCacheProtocol {
         name = imageKitDomain + "memoryCache"
     }
 
-    func saveImageObject(object: IKImageObject, key: String, completion: IKVoidCompletion? = nil) {
+    func saveImageObject(object: PHImageObject, key: String, completion: PHVoidCompletion? = nil) {
         if let image = object.image {
             self.setObject(image, forKey: key, cost: image.ik_memoryCost)
         }
     }
 
-    func getImageObject(key: String) -> IKImageObject? {
+    func getImageObject(key: String) -> PHImageObject? {
         guard let image = objectForKey(key) as? UIImage else {
             return nil
         }
 
-        return IKImageObject(image: image)
+        return PHImageObject(image: image)
     }
 
     func isCached(key: String) -> Bool {
         return objectForKey(key) != nil
     }
 
-    func removeImageObject(key: String, completion: IKVoidCompletion? = nil) {
+    func removeImageObject(key: String, completion: PHVoidCompletion? = nil) {
         removeObjectForKey(key)
     }
 
-    func clear(completion: IKVoidCompletion? = nil) {
+    func clear(completion: PHVoidCompletion? = nil) {
         removeAllObjects()
     }
     

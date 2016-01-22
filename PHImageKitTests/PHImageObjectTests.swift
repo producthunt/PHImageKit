@@ -1,5 +1,5 @@
 //
-//  IKImageObjectTests.swift
+//  PHImageObjectTests.swift
 //  PHImageKit
 //
 //  Created by Vlado on 12/7/15.
@@ -8,29 +8,31 @@
 
 import XCTest
 
-class IKImageObjectTests: XCTestCase {
+@testable import PHImageKit
+
+class PHImageObjectTests: XCTestCase {
 
     func testThatItHandlesProperlyImageData() {
-        let imageObject = IKImageObject(data: ik_imageData())!
+        let imageObject = PHImageObject(data: ik_imageData())!
 
         XCTAssertNotNil(imageObject.image)
         XCTAssertNil(imageObject.gif)
     }
 
     func testThatItHandlesProperlyGifData() {
-        let imageObject = IKImageObject(data: ik_gifData())!
+        let imageObject = PHImageObject(data: ik_gifData())!
 
         XCTAssertNil(imageObject.image)
         XCTAssertNotNil(imageObject.gif)
     }
 
     func testThatItReturnsNilForInvalidData() {
-        let imageObject = IKImageObject(data: NSData())
+        let imageObject = PHImageObject(data: NSData())
         XCTAssertNil(imageObject)
     }
 
     func testThatItReturnsNilIfNoData() {
-        let imageObject = IKImageObject()
+        let imageObject = PHImageObject()
         XCTAssertNil(imageObject)
     }
 

@@ -1,1 +1,10 @@
+PODS:
+  - Nocilla (0.10.0)
+
+DEPENDENCIES:
+  - Nocilla
+
+SPEC CHECKSUMS:
+  Nocilla: ae0a2b05f3087b473624ac2b25903695df51246a
+
 COCOAPODS: 0.39.0

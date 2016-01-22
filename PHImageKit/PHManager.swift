@@ -1,5 +1,5 @@
 //
-//  IKManager.swift
+//  PHManager.swift
 //  PHImageKit
 //
 //  Created by Vlado on 12/6/15.
@@ -10,19 +10,19 @@ import UIKit
 
 let imageKitDomain = "com.productHunt.imageKit"
 
-typealias IKVoidCompletion = () -> Void
-typealias IKProgressCompletion = (percent : CGFloat) -> Void
-typealias IKManagerCompletion = (object: IKImageObject?) -> Void
+typealias PHVoidCompletion = () -> Void
+typealias PHProgressCompletion = (percent : CGFloat) -> Void
+typealias PHManagerCompletion = (object: PHImageObject?) -> Void
 
-class IKManager: NSObject {
+class PHManager: NSObject {
 
-    static let sharedInstance = IKManager()
+    static let sharedInstance = PHManager()
 
-    private let downloader = IKDownloader()
-    private let cache = IKCache()
+    private let downloader = PHDownloader()
+    private let cache = PHCache()
 
     //TODO: (Vlado) Handle local url cases.
-    func imageWithUrl(url: NSURL, progress: IKProgressCompletion, completion: IKManagerCompletion) -> String? {
+    func imageWithUrl(url: NSURL, progress: PHProgressCompletion, completion: PHManagerCompletion) -> String? {
         if imageFromCache(url, completion: completion) {
             return nil;
         }
@@ -48,7 +48,7 @@ class IKManager: NSObject {
         downloader.cancel(url, key: key)
     }
 
-    func purgeCache(includingFileCache fileCache: Bool, completion: IKVoidCompletion? = nil) {
+    func purgeCache(includingFileCache fileCache: Bool, completion: PHVoidCompletion? = nil) {
         cache.clearMemoryCache()
 
         if fileCache {
@@ -56,7 +56,7 @@ class IKManager: NSObject {
         }
     }
 
-    private func imageFromCache(url: NSURL, completion: IKManagerCompletion) -> Bool {
+    private func imageFromCache(url: NSURL, completion: PHManagerCompletion) -> Bool {
         if cache.isImageCached(url) {
             cache.getImage(url, completion: completion)
             return true
@@ -65,7 +65,7 @@ class IKManager: NSObject {
         return false
     }
 
-    private func imageFromWeb(url: NSURL,progress: IKProgressCompletion , completion: IKManagerCompletion) -> String? {
+    private func imageFromWeb(url: NSURL,progress: PHProgressCompletion , completion: PHManagerCompletion) -> String? {
         return downloader.download(url, progress: progress) { (imageObject, error) in
             if let object = imageObject {
                 self.cache.saveImage(object, url: url)

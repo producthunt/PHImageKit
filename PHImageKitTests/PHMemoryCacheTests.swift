@@ -1,5 +1,5 @@
 //
-//  IKMemoryCacheTests.swift
+//  PHMemoryCacheTests.swift
 //  PHImageKit
 //
 //  Created by Vlado on 12/7/15.
@@ -8,9 +8,11 @@
 
 import XCTest
 
-class IKMemoryCacheTests: XCTestCase {
+@testable import PHImageKit
 
-    let cache = IKMemoryCache()
+class PHMemoryCacheTests: XCTestCase {
+
+    let cache = PHMemoryCache()
     let testPath = "https://example.com"
 
     override func tearDown() {
@@ -19,7 +21,7 @@ class IKMemoryCacheTests: XCTestCase {
     }
 
     func testThatItCachesImage() {
-        let object = IKImageObject(data: ik_imageData())!
+        let object = PHImageObject(data: ik_imageData())!
 
         let key = NSURL(string: testPath)!.ik_cacheKey()
 
@@ -29,7 +31,7 @@ class IKMemoryCacheTests: XCTestCase {
     }
 
     func testThatItCachesNotSaveGif() {
-        let object = IKImageObject(data: ik_gifData())!
+        let object = PHImageObject(data: ik_gifData())!
 
         let key = NSURL(string: testPath)!.ik_cacheKey()
 
@@ -39,7 +41,7 @@ class IKMemoryCacheTests: XCTestCase {
     }
 
     func testThatItGetsCachedImage() {
-        let object = IKImageObject(data: ik_imageData())!
+        let object = PHImageObject(data: ik_imageData())!
 
         let key = NSURL(string: testPath)!.ik_cacheKey()
 
@@ -52,7 +54,7 @@ class IKMemoryCacheTests: XCTestCase {
     }
 
     func testThatItRemovesCachedImage() {
-        let object = IKImageObject(data: ik_imageData())!
+        let object = PHImageObject(data: ik_imageData())!
 
         let key = NSURL(string: testPath)!.ik_cacheKey()
 
@@ -69,7 +71,7 @@ class IKMemoryCacheTests: XCTestCase {
         var keys = [String]()
         for i in 0...5 {
             let image = ik_createImage(UIColor.whiteColor(), size: CGSize(width: 1+i, height: 1+1))
-            let object = IKImageObject(data: UIImagePNGRepresentation(image))!
+            let object = PHImageObject(data: UIImagePNGRepresentation(image))!
             let key = NSURL(string: "https://example.com" + "\(i)")!.ik_cacheKey()
 
             keys.append(key)
