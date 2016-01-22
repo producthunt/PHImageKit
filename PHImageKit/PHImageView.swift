@@ -222,7 +222,7 @@ public class PHImageView: UIImageView {
     }
 
     public override func isAnimating() -> Bool {
-        var isAnimating = false
+        var isAnimating = super.isAnimating()
 
         if self.animatedImage != nil {
             isAnimating = self.displayLink != nil && !self.displayLink.paused ? true : false
