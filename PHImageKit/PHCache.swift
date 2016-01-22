@@ -59,6 +59,11 @@ class PHCache: NSObject {
         fileCache.removeImageObject(key, completion: completion)
     }
 
+    func setCacheSize(memoryCacheSize: UInt, fileCacheSize: UInt) {
+        memoryCache.setCacheSize(memoryCacheSize)
+        fileCache.setCacheSize(fileCacheSize)
+    }
+
     func clearMemoryCache() {
         memoryCache.clear()
     }

@@ -91,7 +91,7 @@ class PHFileCache: NSObject, PHCacheProtocol {
     }
 
     func setCacheSize(size: UInt) {
-        maxDiskCacheSize = size * 1024 * 1024
+        maxDiskCacheSize = max(50, min(size, 500)) * 1024 * 1024
     }
 
     private func ioDispatch(operation : (() -> Void)) {

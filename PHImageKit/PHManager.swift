@@ -96,6 +96,17 @@ class PHManager: NSObject {
         }
     }
 
+    /**
+     Change memory and file cache size
+     
+     - parameters:
+        - memoryCacheSize: Size for memory cache in MB. Minimum 50 mb. maximum 250 mb. Default is 50 mb.
+        - fileCacheSize: Size for file cache in MB. Minimum 50 mb. maximum 500 mb. Default is 200 mb.
+    */
+    func setCacheSize(memoryCacheSize: UInt, fileCacheSize: UInt) {
+        cache.setCacheSize(memoryCacheSize, fileCacheSize: fileCacheSize)
+    }
+
     private func imageFromCache(url: NSURL, completion: PHManagerCompletion) -> Bool {
         if cache.isImageCached(url) {
             cache.getImage(url, completion: completion)
