@@ -24,6 +24,11 @@ class PHImageKItCollectionViewController: UICollectionViewController, PHImageKit
         imageDataSource.delegate = self
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
+    }
+
     // MARK: UICollectionViewDataSource
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -56,6 +61,16 @@ class PHImageKItCollectionViewController: UICollectionViewController, PHImageKit
 
     func contentChanged() {
         collectionView?.reloadData()
+    }
+
+    // MARK: Segua
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showDetails" {
+            if let destination = segue.destinationViewController as? PHImageKitDetailsViewController, let selectedIndex = collectionView?.indexPathsForSelectedItems()?.first {
+                destination.url = imageDataSource.content[selectedIndex.row]
+            }
+        }
     }
 
 }

@@ -224,7 +224,7 @@ public class PHImageView: UIImageView {
     public override var highlighted: Bool {
         didSet {
             if self.animatedImage == nil {
-                super.highlighted = true
+                super.highlighted = highlighted
             }
         }
     }

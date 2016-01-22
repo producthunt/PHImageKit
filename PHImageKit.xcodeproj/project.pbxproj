@@ -69,6 +69,7 @@
 		E736C9B91C52620300910933 /* PHImageKItCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736C9B81C52620300910933 /* PHImageKItCollectionViewController.swift */; };
 		E736C9BB1C52627000910933 /* PHImageKitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736C9BA1C52627000910933 /* PHImageKitCell.swift */; };
 		E736C9BD1C5262F700910933 /* PHImageKitDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736C9BC1C5262F700910933 /* PHImageKitDataSource.swift */; };
+		E77936CB1C5271E4005FF450 /* PHImageKitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77936CA1C5271E4005FF450 /* PHImageKitDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,7 @@
 		E736C9B81C52620300910933 /* PHImageKItCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHImageKItCollectionViewController.swift; sourceTree = "<group>"; };
 		E736C9BA1C52627000910933 /* PHImageKitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHImageKitCell.swift; sourceTree = "<group>"; };
 		E736C9BC1C5262F700910933 /* PHImageKitDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHImageKitDataSource.swift; sourceTree = "<group>"; };
+		E77936CA1C5271E4005FF450 /* PHImageKitDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHImageKitDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +264,7 @@
 				E736C9B81C52620300910933 /* PHImageKItCollectionViewController.swift */,
 				E736C9BA1C52627000910933 /* PHImageKitCell.swift */,
 				E736C9BC1C5262F700910933 /* PHImageKitDataSource.swift */,
+				E77936CA1C5271E4005FF450 /* PHImageKitDetailsViewController.swift */,
 			);
 			path = PHImageKitDemo;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E77936CB1C5271E4005FF450 /* PHImageKitDetailsViewController.swift in Sources */,
 				E736C9BD1C5262F700910933 /* PHImageKitDataSource.swift in Sources */,
 				E736C9BB1C52627000910933 /* PHImageKitCell.swift in Sources */,
 				E729DE9D1C4FDA3F00696039 /* AppDelegate.swift in Sources */,
