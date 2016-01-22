@@ -10,7 +10,7 @@ import UIKit
 
 public class PHImageView: UIImageView {
 
-    /// Asset URL
+    /// Images Asset URL - If there is already ongoing request will be cancelled
     public var url : NSURL? {
         didSet {
             if let oldValue = oldValue {
@@ -33,7 +33,7 @@ public class PHImageView: UIImageView {
         }
     }
 
-    /// Should show progress indicator
+    /// Boolean that indicates should progress indicator be visible during downloading
     public var showProgress = true {
         willSet {
             if let progressView = progressView {

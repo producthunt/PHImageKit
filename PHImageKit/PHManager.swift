@@ -25,14 +25,13 @@ class PHManager: NSObject {
     //TODO: (Vlado) Handle local url cases.
 
     /**
-        Download image from given url
-    
-        - parameters:
-            - url: Image URL
-            - progress: Progress closure returns downloaded percent
-            - completion: Completion closure returns `PHImageObject` that holds image or gif.
-        
-        - returns: Unique download key
+    Get image from given url. If image is in cache will be taken from there.
+
+    - parameter url:        Image URL
+    - parameter progress:   Progress closure returns downloaded percent.
+    - parameter completion: Completion closure returns `PHImageObject` that holds image or gif.
+
+    - returns: Unique generated download key. It can be used to cancel request.
     */
     func imageWithUrl(url: NSURL, progress: PHProgressCompletion, completion: PHManagerCompletion) -> String? {
         if imageFromCache(url, completion: completion) {
@@ -88,6 +87,14 @@ class PHManager: NSObject {
      - parameters: 
         - includingFileCache: If `true` file cache will be purged.
     */
+
+
+     /**
+     Purche memory and file cache.
+
+     - parameter fileCache:  If set to `true` file cache will be removed too.
+     - parameter completion: Optional completion closure.
+     */
     func purgeCache(includingFileCache fileCache: Bool, completion: PHVoidCompletion? = nil) {
         cache.clearMemoryCache()
 
