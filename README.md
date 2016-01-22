@@ -70,6 +70,11 @@ Xcode 7.0 or above
 5. Run the tests
 6. Create new Pull Request
 
+## To Do
+
+- Add ability to set `placeholder image`
+- `Objective C` compatibility
+
 ## Inspirations
 
 - [FLAnimatedImage](https://github.com/Flipboard/FLAnimatedImage)
