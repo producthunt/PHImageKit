@@ -125,12 +125,19 @@ public class PHImageView: UIImageView {
 
     func commonInit() {
         showProgress = true
+
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: Selector("stopAnimating"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        notificationCenter.addObserver(self, selector: Selector("startAnimating"), name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
 
     deinit {
         if let displayLink = displayLink {
             displayLink.invalidate()
         }
+
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+
     }
 
     //MARK: Override
@@ -167,7 +174,7 @@ public class PHImageView: UIImageView {
         return poster.size
     }
 
-    public override var image:UIImage? {
+    public override var image: UIImage? {
         get {
             return self.currentFrame ?? super.image
         }
