@@ -13,13 +13,13 @@ class PHMemoryCache: NSCache, PHCacheProtocol {
     override init() {
         super.init()
 
-        totalCostLimit = 50*1024*1024
-
         countLimit = 150
 
         evictsObjectsWithDiscardedContent = true
 
         name = imageKitDomain + "memoryCache"
+
+        setCacheSize(50)
     }
 
     func saveImageObject(object: PHImageObject, key: String, completion: PHVoidCompletion? = nil) {
@@ -46,6 +46,10 @@ class PHMemoryCache: NSCache, PHCacheProtocol {
 
     func clear(completion: PHVoidCompletion? = nil) {
         removeAllObjects()
+    }
+
+    func setCacheSize(size: UInt) {
+        totalCostLimit = Int(size) * 1024 * 1024
     }
     
 }
