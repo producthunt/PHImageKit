@@ -43,7 +43,7 @@ And that it's.
 
 You can configure appearance of `PHImageView`
 
-- Show loading indicator - Disable by default
+- Show loading indicator - Disabled by default
 ```swift
 imageView.showLoadingIndicator = true
 ```
@@ -51,7 +51,7 @@ imageView.showLoadingIndicator = true
 ```swift
 imageView.animatedTransition = true
 ```
-- change default cache size just call
+- Change cache size
 ```swift
 PHManager.sharedInstance.setCacheSize(memorySizeInMB, fileCacheSize: fileSizeInMB)
 ```
