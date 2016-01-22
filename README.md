@@ -31,7 +31,7 @@ $ pod install
 
 ## Usage
 
-Just instead of using `UIImageView` use `PHImageKit` witch is category of `UIImageView`. Then just pass image url
+Just instead of using `UIImageView` use `PHImageView` witch is category of `UIImageView`. Then just pass image url
 
 ```swift
 imageView.url = NSURL(string: "http://your_image_url.png")!
@@ -49,7 +49,7 @@ imageView.showLoadingIndicator = true
 ```
 - Animated transition - Enabled by default
 ```swift
-imageView.animatedTransition = true
+imageView.animatedTransition = false
 ```
 - Change cache size
 ```swift
