@@ -8,8 +8,10 @@
 
 import UIKit
 
+/// PHImageView subclass of `UIImageView`. Set `url` and image view will handle everything for you
 public class PHImageView: UIImageView {
 
+    /// Images Asset URL - If there is already ongoing request will be cancelled
     public var url : NSURL? {
         didSet {
             if let oldValue = oldValue {
@@ -32,6 +34,7 @@ public class PHImageView: UIImageView {
         }
     }
 
+    /// Boolean that indicates should progress view
     public var showProgress = true {
         willSet {
             if let progressView = progressView {
@@ -45,8 +48,10 @@ public class PHImageView: UIImageView {
         }
     }
 
+    /// Should transition of the image should be animated (TransitionCrossDissolve).
     public var animatedImageTransition = true
 
+    /// Animated image
     public var animatedImage: PHAnimatedImage! {
         didSet {
             guard let animatedImage = animatedImage else {

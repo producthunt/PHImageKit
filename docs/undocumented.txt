@@ -1,0 +1,22 @@
+PHAnimatedImage.swift
+	required public init?(coder aDecoder: NSCoder)
+	required convenience public init(imageLiteral name: String)
+PHImageObject.swift
+	public class PHImageObject
+	public var image: UIImage?
+	public var gif: PHAnimatedImage?
+	public var data: NSData?
+	public init?(data: NSData? = nil)
+	public init(image: UIImage)
+PHImageView.swift
+	required public init?(coder aDecoder: NSCoder)
+	public override func awakeFromNib()
+	public override func didMoveToSuperview()
+	public override func didMoveToWindow()
+	public override func intrinsicContentSize() -> CGSize
+	public override var image:UIImage?
+	public override func startAnimating()
+	public override func stopAnimating()
+	public override func isAnimating() -> Bool
+	public override var highlighted: Bool
+	public override func displayLayer(layer: CALayer)

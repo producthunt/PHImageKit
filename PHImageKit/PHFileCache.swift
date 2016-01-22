@@ -10,10 +10,10 @@ import UIKit
 
 class PHFileCache: NSObject, PHCacheProtocol {
 
-    private let ioQueue = dispatch_queue_create(imageKitDomain  + "ioQueue", DISPATCH_QUEUE_SERIAL)
+    private let ioQueue = dispatch_queue_create(imageKitDomain  + ".ioQueue", DISPATCH_QUEUE_SERIAL)
     private var fileManager = NSFileManager()
     private var directory : String!
-    private var maxDiskCacheSize : UInt = 200 * 1024 * 1024
+    private var maxDiskCacheSize : UInt = 0
 
     override init() {
         super.init()
@@ -21,6 +21,8 @@ class PHFileCache: NSObject, PHCacheProtocol {
         directory = (NSSearchPathForDirectoriesInDomains(.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first! as NSString).stringByAppendingPathComponent(imageKitDomain)
 
         createDirectoryIfNeeded()
+
+        setCacheSize(200)
     }
 
     func saveImageObject(object: PHImageObject, key: String, completion: PHVoidCompletion? = nil) {
@@ -86,6 +88,10 @@ class PHFileCache: NSObject, PHCacheProtocol {
 
             self.callCompletion(completion)
         }
+    }
+
+    func setCacheSize(size: UInt) {
+        maxDiskCacheSize = max(50, min(size, 500)) * 1024 * 1024
     }
 
     private func ioDispatch(operation : (() -> Void)) {

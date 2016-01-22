@@ -19,5 +19,7 @@ protocol PHCacheProtocol {
     func removeImageObject(key: String, completion: PHVoidCompletion?)
 
     func clear(completion: PHVoidCompletion?)
+
+    func setCacheSize(size: UInt)
     
 }

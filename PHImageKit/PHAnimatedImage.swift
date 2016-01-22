@@ -11,10 +11,10 @@ import ImageIO
 import MobileCoreServices
 import QuartzCore
 
+/// Subclass of UIImage, responsible for playback of GIFs.
 public class PHAnimatedImage: UIImage {
 
     //TODO: (Vlado) Handle memory warnings
-
     private(set) internal var loopCount = Int.max
     private(set) internal var posterImage: UIImage?
     private(set) internal var delayTimesForIndexes = [Int : NSTimeInterval]()
@@ -28,7 +28,14 @@ public class PHAnimatedImage: UIImage {
     private var posterImageFrameIndex = 0
     private lazy var readFrameQueue = dispatch_queue_create(imageKitDomain + ".gifReadQueue", DISPATCH_QUEUE_SERIAL)
 
-    init(initWithAnimatedGIFData data:NSData) {
+    /**
+     Create animated image
+
+     - parameter data: GIF data
+
+     - returns: Newly created instance of `PHAnimatedImage`
+     */
+    public init(initWithAnimatedGIFData data: NSData) {
         super.init()
 
         if data.length == 0 {
@@ -67,7 +74,14 @@ public class PHAnimatedImage: UIImage {
         fatalError("init(imageLiteral:) has not been implemented")
     }
 
-    func imageFrame(atIndex index: Int) -> UIImage? {
+    /**
+     GIF frame at given index
+
+     - parameter index: If index is out of bounds will return nil.
+
+     - returns: Optional UIImage
+     */
+    public func imageFrame(atIndex index: Int) -> UIImage? {
         if index >= frameCount {
             return nil
         }

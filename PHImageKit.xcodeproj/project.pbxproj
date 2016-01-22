@@ -205,19 +205,19 @@
 			children = (
 				E729DEAC1C4FDC1100696039 /* Categories */,
 				E729DE811C4FD93800696039 /* Info.plist */,
+				E729DE7F1C4FD93800696039 /* PHImageKit.h */,
+				E729DEC41C4FDC3500696039 /* PHImageView.swift */,
 				E729DEBD1C4FDC3500696039 /* PHAnimatedImage.swift */,
-				E729DEBE1C4FDC3500696039 /* PHCache.swift */,
-				E729DEBF1C4FDC3500696039 /* PHCacheProtocol.swift */,
+				E729DEC61C4FDC3500696039 /* PHManager.swift */,
 				E729DEC01C4FDC3500696039 /* PHDownload.swift */,
 				E729DEC11C4FDC3500696039 /* PHDownloader.swift */,
-				E729DEC21C4FDC3500696039 /* PHFileCache.swift */,
-				E729DE7F1C4FD93800696039 /* PHImageKit.h */,
 				E729DEC31C4FDC3500696039 /* PHImageObject.swift */,
-				E729DEC41C4FDC3500696039 /* PHImageView.swift */,
 				E729DEC51C4FDC3500696039 /* PHImageViewProxy.swift */,
-				E729DEC61C4FDC3500696039 /* PHManager.swift */,
-				E729DEC71C4FDC3500696039 /* PHMemoryCache.swift */,
 				E729DEC81C4FDC3500696039 /* PHProgressView.swift */,
+				E729DEBE1C4FDC3500696039 /* PHCache.swift */,
+				E729DEBF1C4FDC3500696039 /* PHCacheProtocol.swift */,
+				E729DEC71C4FDC3500696039 /* PHMemoryCache.swift */,
+				E729DEC21C4FDC3500696039 /* PHFileCache.swift */,
 			);
 			path = PHImageKit;
 			sourceTree = "<group>";

@@ -13,7 +13,7 @@ class PHMemoryCache: NSCache, PHCacheProtocol {
     override init() {
         super.init()
 
-        totalCostLimit = 50*1024*1024
+        setCacheSize(50)
 
         countLimit = 150
 
@@ -46,6 +46,10 @@ class PHMemoryCache: NSCache, PHCacheProtocol {
 
     func clear(completion: PHVoidCompletion? = nil) {
         removeAllObjects()
+    }
+
+    func setCacheSize(size: UInt) {
+        totalCostLimit = max(50, min(Int(size), 250)) * 1024 * 1024
     }
     
 }

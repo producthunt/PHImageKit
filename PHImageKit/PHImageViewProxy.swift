@@ -12,11 +12,18 @@ class PHImageViewProxy {
 
     weak var target: AnyObject!
 
+    /**
+     Proxy object
+
+     - parameter targetObject:
+
+     - returns: Newly created proxy object
+     */
     init(weakProxyForObject targetObject: AnyObject) {
         self.target = targetObject
     }
 
-    @objc func forwardingTargetForSelector(selector:Selector) -> AnyObject {
+    @objc func forwardingTargetForSelector(selector: Selector) -> AnyObject {
         return target
     }
 
