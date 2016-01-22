@@ -43,7 +43,7 @@ And that it's.
 
 You can configure appearance of `PHImageView`
 
-- Show loading indicator - Disabled by default
+- Show loading indicator - Enabled by default
 ```swift
 imageView.showLoadingIndicator = true
 ```
