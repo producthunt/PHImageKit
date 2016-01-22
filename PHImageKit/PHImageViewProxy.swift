@@ -10,7 +10,7 @@ import Foundation
 
 class PHImageViewProxy {
 
-    weak var target: AnyObject!
+    weak var target: AnyObject
 
     /**
      Proxy object

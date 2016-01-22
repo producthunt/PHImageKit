@@ -29,7 +29,6 @@ public class PHImageObject {
         case .GIF :
             gif = PHAnimatedImage(initWithAnimatedGIFData: data)
 
-
         default :
             return nil
         }
