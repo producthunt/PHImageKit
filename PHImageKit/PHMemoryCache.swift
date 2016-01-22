@@ -13,13 +13,13 @@ class PHMemoryCache: NSCache, PHCacheProtocol {
     override init() {
         super.init()
 
+        setCacheSize(50)
+
         countLimit = 150
 
         evictsObjectsWithDiscardedContent = true
 
         name = imageKitDomain + "memoryCache"
-
-        setCacheSize(50)
     }
 
     func saveImageObject(object: PHImageObject, key: String, completion: PHVoidCompletion? = nil) {

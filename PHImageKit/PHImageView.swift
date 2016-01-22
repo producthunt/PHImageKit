@@ -10,6 +10,7 @@ import UIKit
 
 public class PHImageView: UIImageView {
 
+    /// Asset URL
     public var url : NSURL? {
         didSet {
             if let oldValue = oldValue {
@@ -32,6 +33,7 @@ public class PHImageView: UIImageView {
         }
     }
 
+    /// Should show progress indicator
     public var showProgress = true {
         willSet {
             if let progressView = progressView {
@@ -45,8 +47,10 @@ public class PHImageView: UIImageView {
         }
     }
 
+    /// Should transition of the image should be animated (TransitionCrossDissolve).
     public var animatedImageTransition = true
 
+    /// Animated image
     public var animatedImage: PHAnimatedImage! {
         didSet {
             guard let animatedImage = animatedImage else {

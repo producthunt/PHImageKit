@@ -14,7 +14,6 @@ import QuartzCore
 public class PHAnimatedImage: UIImage {
 
     //TODO: (Vlado) Handle memory warnings
-
     private(set) internal var loopCount = Int.max
     private(set) internal var posterImage: UIImage?
     private(set) internal var delayTimesForIndexes = [Int : NSTimeInterval]()
@@ -28,7 +27,7 @@ public class PHAnimatedImage: UIImage {
     private var posterImageFrameIndex = 0
     private lazy var readFrameQueue = dispatch_queue_create(imageKitDomain + ".gifReadQueue", DISPATCH_QUEUE_SERIAL)
 
-    init(initWithAnimatedGIFData data:NSData) {
+    init(initWithAnimatedGIFData data: NSData) {
         super.init()
 
         if data.length == 0 {
