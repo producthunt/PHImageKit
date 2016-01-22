@@ -1,6 +1,13 @@
 # PHImageKit
 
-PHImageKit is simple yet powerfull image downloding, caching and GIF playback framework. It powers all image related views in ProductHunt iOS App.
+PHImageKit is simple yet powerful image downloading, caching and GIF playback framework. 
+
+- Download image or GIF and display it with just a single call
+- Caches both in memory and in file storage
+- Plays multiple GIFs simultaneously
+- Eliminates delays or blocking during the first playback loop of GIFs
+
+PHImageKit is the component that powers all images and GIFs in ProductHunt iOS App
 
 ## Installation
 
@@ -34,7 +41,7 @@ And that it's.
 
 ## Options
 
-You can configure apperiance of `PHImageView`
+You can configure appearance of `PHImageView`
 
 - Show loading indicator - Disable by default
 ```swift
@@ -44,9 +51,7 @@ imageView.showLoadingIndicator = true
 ```swift
 imageView.animatedTransition = true
 ```
-
-If you want to change default cache size just call
-
+- change default cache size just call
 ```swift
 PHManager.sharedInstance.setCacheSize(memorySizeInMB, fileCacheSize: fileSizeInMB)
 ```
@@ -64,6 +69,12 @@ Xcode 7.0 or above
 4. Push to the branch (`git push origin my-new-feature`)
 5. Run the tests
 6. Create new Pull Request
+
+## Inspirations
+
+- [FLAnimatedImage](https://github.com/Flipboard/FLAnimatedImage)
+- [SDWebImage](https://github.com/rs/SDWebImage)
+- [Kingfisher](https://github.com/onevcat/Kingfisher)
 
 ## License
 
