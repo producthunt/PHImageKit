@@ -1,25 +1,104 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8BJ-de-85z">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--ImageK It Collection View Controller-->
+        <scene sceneID="OMB-37-Yit">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <collectionViewController id="nqD-gH-cda" customClass="PHImageKItCollectionViewController" customModule="PHImageKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="VdA-fQ-jqX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="X5g-fd-Tc9">
+                            <size key="itemSize" width="160" height="160"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="16" minY="16" maxX="16" maxY="16"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PHImageKitCellIdentifier" id="Orf-4Z-lge" customClass="PHImageKitCell" customModule="PHImageKitDemo" customModuleProvider="target">
+                                <rect key="frame" x="16" y="80" width="160" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QhP-Sx-YB8" customClass="PHImageView" customModule="PHImageKit">
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                            <color key="backgroundColor" red="0.78823529410000004" green="0.80000000000000004" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="QhP-Sx-YB8" firstAttribute="top" secondItem="Orf-4Z-lge" secondAttribute="top" id="Adx-FJ-ebb"/>
+                                    <constraint firstAttribute="trailing" secondItem="QhP-Sx-YB8" secondAttribute="trailing" id="Egs-f9-w42"/>
+                                    <constraint firstItem="QhP-Sx-YB8" firstAttribute="leading" secondItem="Orf-4Z-lge" secondAttribute="leading" id="YP9-xy-k2O"/>
+                                    <constraint firstAttribute="bottom" secondItem="QhP-Sx-YB8" secondAttribute="bottom" id="jT3-3c-opv"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="QhP-Sx-YB8" id="ex8-TO-Ghb"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="nqD-gH-cda" id="taV-9K-q2M"/>
+                            <outlet property="delegate" destination="nqD-gH-cda" id="45W-It-NIh"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="PU6-nj-LDy">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Reload" id="hLL-4n-JWl">
+                            <connections>
+                                <action selector="reload:" destination="nqD-gH-cda" id="kAy-uS-0FV"/>
+                            </connections>
+                        </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Vik-d1-z0v">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="GIF"/>
+                                <segment title="Image"/>
+                            </segments>
+                            <connections>
+                                <action selector="changeSelectedSegmentAction:" destination="nqD-gH-cda" eventType="valueChanged" id="5gW-X0-cMB"/>
+                            </connections>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" title="Clear cache" id="5Mh-pZ-z4w">
+                            <connections>
+                                <action selector="clearCache:" destination="nqD-gH-cda" id="ffv-c2-Tbx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="segmentedControl" destination="Vik-d1-z0v" id="2HP-dE-0Kz"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zMr-XI-cnp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1783" y="935"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7ya-R8-iYk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8BJ-de-85z" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="81B-iU-yau">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nqD-gH-cda" kind="relationship" relationship="rootViewController" id="plC-gS-05w"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hlq-y5-lzV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1059" y="935"/>
         </scene>
     </scenes>
 </document>
