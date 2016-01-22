@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// PHImageView subclass of `UIImageView`. Set `url` and image view will handle everything for you
 public class PHImageView: UIImageView {
 
     /// Images Asset URL - If there is already ongoing request will be cancelled
@@ -33,7 +34,7 @@ public class PHImageView: UIImageView {
         }
     }
 
-    /// Boolean that indicates should progress indicator be visible during downloading
+    /// Boolean that indicates should progress view
     public var showProgress = true {
         willSet {
             if let progressView = progressView {

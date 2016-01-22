@@ -8,14 +8,13 @@
 
 import UIKit
 
-class PHImageObject {
+public class PHImageObject {
 
-    var image: UIImage?
-    var gif: PHAnimatedImage?
-    var data: NSData?
+    public var image: UIImage?
+    public var gif: PHAnimatedImage?
+    public var data: NSData?
 
-    //TODO: (Vlado) Investigate do we need this object.
-    init?(data: NSData? = nil) {
+    public init?(data: NSData? = nil) {
         guard let data = data else {
             return nil
         }
@@ -36,7 +35,7 @@ class PHImageObject {
         }
     }
 
-    init(image: UIImage) {
+    public init(image: UIImage) {
         self.image = image
     }
 
