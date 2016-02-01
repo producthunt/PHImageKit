@@ -1,5 +1,5 @@
 //
-//  PHImageKit.h
+//  PHCacheProtocol.swift
 //  PHImageKit
 //
 // Copyright (c) 2016 Product Hunt (http://producthunt.com)
@@ -22,14 +22,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+import UIKit
 
-//! Project version number for PHImageKit.
-FOUNDATION_EXPORT double PHImageKitVersionNumber;
+protocol PHCacheProtocol {
 
-//! Project version string for PHImageKit.
-FOUNDATION_EXPORT const unsigned char PHImageKitVersionString[];
+    func saveImageObject(object: PHImageObject, key: String, completion: PHVoidCompletion?)
 
-// In this header, you should import all the public headers of your framework using statements like #import <PHImageKit/PublicHeader.h>
+    func getImageObject(key: String, completion: PHManagerCompletion)
 
+    func isCached(key: String) -> Bool
 
+    func removeImageObject(key: String, completion: PHVoidCompletion?)
+
+    func clear(completion: PHVoidCompletion?)
+
+    func setCacheSize(size: UInt)
+    
+}

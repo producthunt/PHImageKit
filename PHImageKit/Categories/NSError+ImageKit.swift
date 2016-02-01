@@ -1,5 +1,5 @@
 //
-//  PHImageKit.h
+//  NSError+ImageKit.swift
 //  PHImageKit
 //
 // Copyright (c) 2016 Product Hunt (http://producthunt.com)
@@ -22,14 +22,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+import Foundation
 
-//! Project version number for PHImageKit.
-FOUNDATION_EXPORT double PHImageKitVersionNumber;
+enum PHErrorCodes : Int {
+    case InvalidUrl     = 1
+    case InvalidData    = 2
+}
 
-//! Project version string for PHImageKit.
-FOUNDATION_EXPORT const unsigned char PHImageKitVersionString[];
+extension NSError {
 
-// In this header, you should import all the public headers of your framework using statements like #import <PHImageKit/PublicHeader.h>
+    class func ik_invalidUrlError() -> NSError {
+        return NSError(domain: imageKitDomain, code: PHErrorCodes.InvalidUrl.rawValue, userInfo: [NSLocalizedDescriptionKey : "Invalid URL"])
+    }
 
-
+    class func ik_invalidDataError() -> NSError {
+        return NSError(domain: imageKitDomain, code: PHErrorCodes.InvalidData.rawValue, userInfo: [NSLocalizedDescriptionKey : "Invalid Data"])
+    }
+}

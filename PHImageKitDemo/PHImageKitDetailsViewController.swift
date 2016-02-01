@@ -1,5 +1,5 @@
 //
-//  PHImageKit.h
+//  PHImageKitDetailsViewController.swift
 //  PHImageKit
 //
 // Copyright (c) 2016 Product Hunt (http://producthunt.com)
@@ -22,14 +22,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+import UIKit
+import PHImageKit
 
-//! Project version number for PHImageKit.
-FOUNDATION_EXPORT double PHImageKitVersionNumber;
+class PHImageKitDetailsViewController: UIViewController {
 
-//! Project version string for PHImageKit.
-FOUNDATION_EXPORT const unsigned char PHImageKitVersionString[];
+    @IBOutlet weak var imageView: PHImageView!
 
-// In this header, you should import all the public headers of your framework using statements like #import <PHImageKit/PublicHeader.h>
+    var url : NSURL?
 
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        imageView.url = url
+    }
+}

@@ -1,5 +1,5 @@
 //
-//  PHImageKit.h
+//  PHImageObject.swift
 //  PHImageKit
 //
 // Copyright (c) 2016 Product Hunt (http://producthunt.com)
@@ -22,14 +22,37 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+import UIKit
 
-//! Project version number for PHImageKit.
-FOUNDATION_EXPORT double PHImageKitVersionNumber;
+public class PHImageObject {
 
-//! Project version string for PHImageKit.
-FOUNDATION_EXPORT const unsigned char PHImageKitVersionString[];
+    public var image: UIImage?
+    public var gif: PHAnimatedImage?
+    public var data: NSData?
 
-// In this header, you should import all the public headers of your framework using statements like #import <PHImageKit/PublicHeader.h>
+    public init?(data: NSData? = nil) {
+        guard let data = data else {
+            return nil
+        }
+
+        self.data = data
+
+        switch data.ik_imageFormat {
+
+        case .PNG, .JPEG :
+            image = UIImage(data: data, scale: UIScreen.mainScreen().scale)?.ik_decompress()
+
+        case .GIF :
+            gif = PHAnimatedImage(initWithAnimatedGIFData: data)
 
 
+        default :
+            return nil
+        }
+    }
+
+    public init(image: UIImage) {
+        self.image = image
+    }
+
+}

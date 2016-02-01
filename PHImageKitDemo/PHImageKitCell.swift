@@ -1,5 +1,5 @@
 //
-//  PHImageKit.h
+//  PHImageKitCell.swift
 //  PHImageKit
 //
 // Copyright (c) 2016 Product Hunt (http://producthunt.com)
@@ -22,14 +22,29 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+import UIKit
+import PHImageKit
 
-//! Project version number for PHImageKit.
-FOUNDATION_EXPORT double PHImageKitVersionNumber;
+class PHImageKitCell: UICollectionViewCell {
+    
+    @IBOutlet weak var imageView: PHImageView!
 
-//! Project version string for PHImageKit.
-FOUNDATION_EXPORT const unsigned char PHImageKitVersionString[];
+    override var highlighted : Bool {
+        set {
+            super.highlighted = false
+        }
+        get {
+            return super.highlighted
+        }
+    }
 
-// In this header, you should import all the public headers of your framework using statements like #import <PHImageKit/PublicHeader.h>
+    override var selected: Bool {
+        set {
+            super.selected = false
+        }
+        get {
+            return super.selected
+        }
+    }
 
-
+}

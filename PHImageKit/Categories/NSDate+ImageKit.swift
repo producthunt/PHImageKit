@@ -1,5 +1,5 @@
 //
-//  PHImageKit.h
+//  NSDate+ImageKit.swift
 //  PHImageKit
 //
 // Copyright (c) 2016 Product Hunt (http://producthunt.com)
@@ -22,14 +22,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+import Foundation
 
-//! Project version number for PHImageKit.
-FOUNDATION_EXPORT double PHImageKitVersionNumber;
+extension NSDate {
 
-//! Project version string for PHImageKit.
-FOUNDATION_EXPORT const unsigned char PHImageKitVersionString[];
+    func ik_isExpired() -> Bool {
+        return self.compare(NSDate(timeIntervalSinceNow: -60 * 60 * 24 * 7)) == .OrderedAscending
+    }
 
-// In this header, you should import all the public headers of your framework using statements like #import <PHImageKit/PublicHeader.h>
-
+}
 

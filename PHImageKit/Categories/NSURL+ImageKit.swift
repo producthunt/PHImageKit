@@ -1,5 +1,5 @@
 //
-//  PHImageKit.h
+//  NSURL+ImageKit.swift
 //  PHImageKit
 //
 // Copyright (c) 2016 Product Hunt (http://producthunt.com)
@@ -22,14 +22,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+import Foundation
 
-//! Project version number for PHImageKit.
-FOUNDATION_EXPORT double PHImageKitVersionNumber;
+extension NSURL {
 
-//! Project version string for PHImageKit.
-FOUNDATION_EXPORT const unsigned char PHImageKitVersionString[];
+    func ik_isValid() -> Bool {
+        let urlRegEx = "(https|http)://.*"
+        let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[urlRegEx])
 
-// In this header, you should import all the public headers of your framework using statements like #import <PHImageKit/PublicHeader.h>
+        return predicate.evaluateWithObject(absoluteString)
+    }
 
+    func ik_cacheKey() -> String {
+        return absoluteString.ik_MD5()
+    }
 
+}
