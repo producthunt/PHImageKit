@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/producthunt/PHImageKit.svg?branch=master)](https://travis-ci.org/producthunt/PHImageKit)
+[![Cocoapods Version](https://cocoapod-badges.herokuapp.com/v/PHImageKit/badge.png)](http://cocoadocs.org/docsets/PHImageKit)
 
 # PHImageKit
 
