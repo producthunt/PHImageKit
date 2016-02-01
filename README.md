@@ -8,6 +8,7 @@ PHImageKit is simple yet powerful image downloading, caching and GIF playback fr
 - Caches both in memory and in file storage
 - Plays multiple GIFs simultaneously
 - Eliminates delays or blocking during the first playback loop of GIFs
+- Written in Swift
 
 PHImageKit is the component that powers all images and GIFs in ProductHunt iOS App 😻
 
