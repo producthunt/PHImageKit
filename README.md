@@ -79,6 +79,11 @@ Xcode 7.0 or above
 - [SDWebImage](https://github.com/rs/SDWebImage)
 - [Kingfisher](https://github.com/onevcat/Kingfisher)
 
+## Contributors
+
+- [Vladimir Vladimirov](https://github.com/devladinci)
+- [Radoslav Stankov](https://github.com/rstankov)
+
 ## License
 
 [![Product Hunt](http://i.imgur.com/dtAr7wC.png)](https://www.producthunt.com)
