@@ -5,19 +5,19 @@
 
 PHImageKit is simple yet powerful image downloading, caching and GIF playback framework. 
 
-- Download image or GIF and display it with just a single call
+- Download an image or GIF and display it with just a single call
 - Caches both in memory and in file storage
 - Plays multiple GIFs simultaneously
 - Eliminates delays or blocking during the first playback loop of GIFs
 - Written in Swift
 
-PHImageKit is the component that powers all images and GIFs in ProductHunt iOS App 😻
+PHImageKit is the component that powers all the images and GIFs in the [Product Hunt iOS App](https://itunes.apple.com/us/app/product-hunt-best-new-products/id904658671?mt=8) 😻
 
 ## Installation
 
 #### Installation with CocoaPods
 
-[CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C and swift, which automates and simplifies the process of using 3rd-party libraries like PHImageKit
+[CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C and swift, which automates and simplifies the process of using 3rd-party libraries like PHImageKit.
 
 ``` ruby
 source 'https://github.com/CocoaPods/Specs.git'
@@ -35,21 +35,21 @@ $ pod install
 
 ## Usage
 
-Just instead of using `UIImageView` use `PHImageView` witch is category of `UIImageView`. Then just pass image url
+Replace your usage of `UIImageView` with `PHImageView`. Then simply pass your image url.
 
 ```swift
 imageView.url = NSURL(string: "http://your_image_url.png")!
 ```
 
-And that it's. 🚀
+And that's it. 🚀
 
 ## Options
 
-You can configure appearance of `PHImageView`
+You can configure the appearance of `PHImageView`
 
 | Parameter                   | Description                                       | Defined in        | Default state              |
 | ---                         | ---                                               | ---               | ---                        |
-| ```showLoadingIndicator```  | Show loading indicator, while downloading image   | ```PHImageView``` | true                       |
+| ```showLoadingIndicator```  | Shows a loading indicator during download         | ```PHImageView``` | true                       |
 | ```animatedTransition```    | Cross dissolve animated transition                | ```PHImageView``` | true                       |
 | ```setCacheSize```          | Set max file and memory cache size in MB          | ```PHManager ```  | memory : 50mb file : 250mb |
 
