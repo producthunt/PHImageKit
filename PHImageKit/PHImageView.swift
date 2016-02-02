@@ -139,14 +139,20 @@ public class PHImageView: UIImageView {
         commonInit()
     }
 
-    func commonInit() {
+    public func commonInit() {
         showProgress = true
+
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: Selector("stopAnimating"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        notificationCenter.addObserver(self, selector: Selector("startAnimating"), name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
 
     deinit {
         if let displayLink = displayLink {
             displayLink.invalidate()
         }
+
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     //MARK: Override
