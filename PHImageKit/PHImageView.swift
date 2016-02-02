@@ -119,17 +119,17 @@ public class PHImageView: UIImageView {
         commonInit()
     }
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
 
-    override init(image: UIImage?) {
+    public override init(image: UIImage?) {
         super.init(image: image)
         commonInit()
     }
 
-    override init(image: UIImage?, highlightedImage: UIImage!)  {
+    public override init(image: UIImage?, highlightedImage: UIImage!)  {
         super.init(image: image, highlightedImage: highlightedImage)
         commonInit()
     }
