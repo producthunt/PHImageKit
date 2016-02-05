@@ -134,8 +134,11 @@ public class PHAnimatedImage: UIImage {
     }
 
     private func predrawnImageAtIndex(index:Int) -> UIImage {
-        let imageRef = CGImageSourceCreateImageAtIndex(imageSource!, index, nil)
-        return UIImage(CGImage: imageRef!).ik_decompress()
+        guard let imageRef = CGImageSourceCreateImageAtIndex(imageSource!, index, nil) else {
+            return UIImage()
+        }
+
+        return UIImage(CGImage: imageRef).ik_decompress()
     }
 
     private func frameIndexesToCache(index:Int) -> NSMutableIndexSet {
