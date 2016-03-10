@@ -159,6 +159,15 @@ class PHCache: NSObject {
         }
     }
 
+    /**
+     Get size of the cache.
+
+     - returns: Size of cached files in kb.
+     */
+    func cacheSize() -> UInt {
+        return fileCache.cacheSize()
+    }
+
     private func cacheKey(url: NSURL) -> String {
         return url.absoluteString.ik_MD5()
     }

@@ -126,6 +126,15 @@ public class PHManager: NSObject {
         cache.setCacheSize(memoryCacheSize, fileCacheSize: fileCacheSize)
     }
 
+    /**
+     Get cache size.
+
+     - returns: Size of cache in kb.
+     */
+    public func getCacheSize() -> UInt {
+        return cache.cacheSize()
+    }
+
     private func imageFromCache(url: NSURL, completion: PHManagerCompletion) -> Bool {
         if cache.isImageCached(url) {
             cache.getImage(url, completion: completion)
