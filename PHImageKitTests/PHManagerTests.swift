@@ -13,7 +13,7 @@ import XCTest
 class PHManagerTests: XCTestCase {
 
     let manager = PHManager.sharedInstance
-    let urlPath = "http://producthunt.com/test.jpg"
+    let urlPath = "http://domain.com/test.jpg"
 
     override class func setUp() {
         super.setUp()
