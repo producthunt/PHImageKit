@@ -107,6 +107,15 @@ public class PHManager: NSObject {
     }
 
     /**
+     Purge file cache only
+
+     - parameter completion: Optional completion closure
+     */
+    public func purgeFileCache(completion: PHVoidCompletion? = nil) {
+        cache.clearFileChache(completion)
+    }
+
+    /**
      Change memory and file cache size
      
      - parameters:

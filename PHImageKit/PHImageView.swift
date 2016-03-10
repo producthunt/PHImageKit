@@ -252,7 +252,7 @@ public class PHImageView: UIImageView {
         get {
             return super.highlighted
         }
-
+ 
     }
 
     public override func displayLayer(layer: CALayer) {
