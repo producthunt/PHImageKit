@@ -27,7 +27,6 @@ class PHManagerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        stubFabric()
     }
 
     override func tearDown() {
@@ -82,8 +81,6 @@ class PHManagerTests: XCTestCase {
 
                     LSNocilla.sharedInstance().clearStubs()
 
-                    self.stubFabric()
-
                     self.manager.imageWithUrl(url, progress: { (percent) -> Void in }, completion: { (object) -> Void in
                         XCTAssertNotNil(object!.image)
                         XCTAssertNil(object!.gif)
@@ -93,13 +90,6 @@ class PHManagerTests: XCTestCase {
                 })
             })
         }
-    }
-
-    private func stubFabric() {
-        //NOTE: (Vlado) We need to stub fabric request, beacause we don't
-        // have controll over executing Fabric requests.
-        stubRequest("GET", "https://api.twitter.com/1.1/account/verify_credentials.json")
-        stubRequest("PUT", "https://api.crashlytics.com/spi/v1/platforms/ios/apps/com.producthunt.producthuntbundleid")
     }
 
 }

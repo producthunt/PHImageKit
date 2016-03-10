@@ -110,7 +110,7 @@ class PHFileCache: NSObject, PHCacheProtocol {
     }
 
     func cacheSize() -> UInt {
-        var totalSize = 0
+        var totalSize: UInt = 0
 
         getFiles().forEach {
             totalSize += self.getResourceValue($0, key: NSURLTotalFileAllocatedSizeKey, defaultValue: NSNumber()).unsignedLongValue
