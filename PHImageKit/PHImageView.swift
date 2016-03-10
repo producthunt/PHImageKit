@@ -244,11 +244,15 @@ public class PHImageView: UIImageView {
     }
 
     public override var highlighted: Bool {
-        didSet {
-            if self.animatedImage == nil {
-                super.highlighted = true
+        set {
+            if self.animatedImage != nil {
+                super.highlighted = false
             }
         }
+        get {
+            return super.highlighted
+        }
+
     }
 
     public override func displayLayer(layer: CALayer) {
