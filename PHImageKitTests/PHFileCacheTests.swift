@@ -145,6 +145,18 @@ class PHFileCacheTests: XCTestCase {
             }
         }
     }
-    
+
+    func testThatReturnsCachedSize() {
+        let object = PHImageObject(data: ik_imageData())!
+
+        let key = NSURL(string: testPath)!.ik_cacheKey()
+
+        ik_expectation("Save in cache expectation") { (expectation) -> Void in
+            self.cache.saveImageObject(object, key: key) {
+                XCTAssertTrue(self.cache.cacheSize() > 0)
+                expectation.fulfill()
+            }
+        }
+    }
     
 }

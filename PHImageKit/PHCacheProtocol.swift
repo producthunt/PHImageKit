@@ -37,5 +37,7 @@ protocol PHCacheProtocol {
     func clear(completion: PHVoidCompletion?)
 
     func setCacheSize(size: UInt)
+
+    func cacheSize() -> UInt
     
 }

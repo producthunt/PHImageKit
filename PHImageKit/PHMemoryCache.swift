@@ -68,5 +68,9 @@ class PHMemoryCache: NSCache, PHCacheProtocol {
     func setCacheSize(size: UInt) {
         totalCostLimit = max(50, min(Int(size), 250)) * 1024 * 1024
     }
+
+    func cacheSize() -> UInt {
+        return 0
+    }
     
 }

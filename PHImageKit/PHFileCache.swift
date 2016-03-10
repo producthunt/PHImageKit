@@ -109,6 +109,16 @@ class PHFileCache: NSObject, PHCacheProtocol {
         maxDiskCacheSize = max(50, min(size, 500)) * 1024 * 1024
     }
 
+    func cacheSize() -> UInt {
+        var totalSize: UInt = 0
+
+        getFiles().forEach {
+            totalSize += self.getResourceValue($0, key: NSURLTotalFileAllocatedSizeKey, defaultValue: NSNumber()).unsignedLongValue
+        }
+
+        return totalSize
+    }
+
     private func ioDispatch(operation : (() -> Void)) {
         dispatch_async(ioQueue, operation)
     }

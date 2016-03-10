@@ -107,6 +107,15 @@ public class PHManager: NSObject {
     }
 
     /**
+     Purge file cache only
+
+     - parameter completion: Optional completion closure
+     */
+    public func purgeFileCache(completion: PHVoidCompletion? = nil) {
+        cache.clearFileChache(completion)
+    }
+
+    /**
      Change memory and file cache size
      
      - parameters:
@@ -115,6 +124,15 @@ public class PHManager: NSObject {
     */
     public func setCacheSize(memoryCacheSize: UInt, fileCacheSize: UInt) {
         cache.setCacheSize(memoryCacheSize, fileCacheSize: fileCacheSize)
+    }
+
+    /**
+     Get cache size.
+
+     - returns: Size of cache in kb.
+     */
+    public func getCacheSize() -> UInt {
+        return cache.cacheSize()
     }
 
     private func imageFromCache(url: NSURL, completion: PHManagerCompletion) -> Bool {
