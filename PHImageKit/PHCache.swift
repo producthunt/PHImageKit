@@ -169,14 +169,14 @@ class PHCache: NSObject {
     }
 
     private func cacheKey(url: NSURL) -> String {
-        return url.absoluteString.ik_MD5()
+        return url.absoluteString.ik_MD5
     }
 
     private func addObservers() {
         let center = NSNotificationCenter.defaultCenter()
-        center.addObserver(self, selector: "clearMemoryCache", name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
-        center.addObserver(self, selector: "cleanExpiredDiskCache", name: UIApplicationWillTerminateNotification, object: nil)
-        center.addObserver(self, selector: "backgroundCleanExpiredDiskCache", name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        center.addObserver(self, selector: #selector(PHCache.clearMemoryCache), name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
+        center.addObserver(self, selector: #selector(PHCache.cleanExpiredDiskCache), name: UIApplicationWillTerminateNotification, object: nil)
+        center.addObserver(self, selector: #selector(PHCache.backgroundCleanExpiredDiskCache), name: UIApplicationDidEnterBackgroundNotification, object: nil)
     }
     
 }

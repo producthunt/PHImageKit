@@ -122,7 +122,7 @@ public class PHAnimatedImage: UIImage {
 
         dispatch_async(readFrameQueue) { [weak self] () -> Void in
             indexesToCache.enumerateRangesWithOptions(NSEnumerationOptions.Concurrent) { (range, stop) in
-                for var i = range.location; i < NSMaxRange(range); i++ {
+                for i in range.location ..< NSMaxRange(range) {
                     self?.cachedFramesForIndexes[i] = self?.predrawnImageAtIndex(i)
                     self?.cachedFrameIndexes.addIndex(i)
                     self?.requestedFrameIndexes.removeIndex(i)
@@ -168,7 +168,7 @@ public class PHAnimatedImage: UIImage {
             indexesToPurge.removeIndex(posterImageFrameIndex)
 
             indexesToPurge.enumerateRangesUsingBlock { (range, stop) in
-                for var i = range.location; i < NSMaxRange(range); i++ {
+                for i in range.location ..< NSMaxRange(range) {
                     self.cachedFrameIndexes.removeIndex(i)
                     self.cachedFramesForIndexes.removeValueForKey(i)
                 }

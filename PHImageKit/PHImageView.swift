@@ -143,8 +143,8 @@ public class PHImageView: UIImageView {
         showProgress = true
 
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: Selector("stopAnimating"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
-        notificationCenter.addObserver(self, selector: Selector("startAnimating"), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(PHImageView.stopAnimating), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(PHImageView.startAnimating), name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
 
     deinit {
@@ -207,7 +207,7 @@ public class PHImageView: UIImageView {
 
         if displayLink == nil {
             let weakProxy : PHImageViewProxy = PHImageViewProxy(weakProxyForObject: self)
-            displayLink = CADisplayLink(target: weakProxy, selector: "displayDidRefresh:")
+            displayLink = CADisplayLink(target: weakProxy, selector: #selector(PHImageView.displayDidRefresh(_:)))
 
             let mode : String = {
                 var modeToReturn =  NSDefaultRunLoopMode
@@ -326,7 +326,7 @@ public class PHImageView: UIImageView {
             let delayTime =  NSTimeInterval(delayTimeNumber)
             while accumulator >= delayTime {
                 accumulator = accumulator - delayTime
-                currentFrameIndex++
+                currentFrameIndex += 1
                 if currentFrameIndex >= animatedImage.frameCount {
                     loopCountdown = loopCountdown - 1
 
@@ -341,7 +341,7 @@ public class PHImageView: UIImageView {
                 needsDisplayWhenImageBecomesAvailable = true
             }
         } else {
-            currentFrameIndex++
+            currentFrameIndex += 1
         }
     }
 

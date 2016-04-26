@@ -13,3 +13,8 @@
 ## Version 0.1.2
 
 * [PHImageView] - public `init`
+
+## Version 0.1.3.1
+
+* [PHImageView] - `Image` `will` and `did` change
+* [Swift 2.2] - Fix warnings
