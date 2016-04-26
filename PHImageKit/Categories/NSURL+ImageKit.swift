@@ -34,7 +34,7 @@ extension NSURL {
     }
 
     func ik_cacheKey() -> String {
-        return absoluteString.ik_MD5()
+        return absoluteString.ik_MD5
     }
 
 }
