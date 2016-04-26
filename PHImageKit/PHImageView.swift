@@ -285,15 +285,19 @@ public class PHImageView: UIImageView {
     private func setImage(object: PHImageObject) {
         ik_dispatch_main_queue {
             if !self.animatedImageTransition {
+                self.willChangeValueForKey("image")
                 super.image = object.image
                 self.animatedImage = object.gif
+                self.didChangeValueForKey("image")
 
                 return
             }
 
             UIView.transitionWithView(self, duration: 0.15, options: .TransitionCrossDissolve, animations: {
+                self.willChangeValueForKey("image")
                 super.image = object.image
                 self.animatedImage = object.gif
+                self.didChangeValueForKey("image")
 
                 }, completion: nil)
         }
