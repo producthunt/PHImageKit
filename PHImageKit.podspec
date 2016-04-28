@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name          = "PHImageKit"
-  s.version       = "0.1.3.1"
+  s.version       = "0.1.4"
   s.summary       = "Simple yet powerful image downloading, caching and GIF playback framework."
   s.homepage      = "https://github.com/producthunt/PHImageKit"
   s.license       = { type: 'MIT', file: 'LICENSE' }
