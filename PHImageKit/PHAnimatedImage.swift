@@ -142,7 +142,7 @@ public class PHAnimatedImage: UIImage {
 
         weak var weakSelf = self
 
-        if let weakSelf = weakSelf, let predwanImage = predrawnImageFromImage(image) {
+        if let weakSelf = weakSelf, let predwanImage = weakSelf.predrawnImageFromImage(image) {
             return predwanImage
         }
 
