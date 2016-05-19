@@ -40,7 +40,7 @@ public class PHImageObject {
         switch data.ik_imageFormat {
 
         case .PNG, .JPEG :
-            image = UIImage(data: data, scale: UIScreen.mainScreen().scale)?.ik_decompress()
+            image = UIImage(data: data, scale: UIScreen.mainScreen().scale) ?? UIImage()
 
         case .GIF :
             gif = PHAnimatedImage(initWithAnimatedGIFData: data)

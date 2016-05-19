@@ -138,7 +138,15 @@ public class PHAnimatedImage: UIImage {
             return UIImage()
         }
 
-        return UIImage(CGImage: imageRef).ik_decompress()
+        let image = UIImage(CGImage: imageRef)
+
+        weak var weakSelf = self
+
+        if let weakSelf = weakSelf, let predwanImage = predrawnImageFromImage(image) {
+            return predwanImage
+        }
+
+        return UIImage()
     }
 
     private func frameIndexesToCache(index:Int) -> NSMutableIndexSet {
@@ -222,5 +230,4 @@ public class PHAnimatedImage: UIImage {
 
         delayTimesForIndexes[index] = delayTime
     }
-
 }

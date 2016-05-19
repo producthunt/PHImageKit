@@ -35,42 +35,45 @@ extension UIImage {
     }
 
     //NOTE: (Vlado) For super smooth image loading. Inspired from https://gist.github.com/steipete/1144242
-    func ik_decompress() -> UIImage {
-        let originalImageRef = self.CGImage
-        let originalBitmapInfo = CGImageGetBitmapInfo(originalImageRef)
-        let alphaInfo = CGImageGetAlphaInfo(originalImageRef)
-
-        var bitmapInfo = originalBitmapInfo
-        switch (alphaInfo) {
-        case .None:
-            let rawBitmapInfoWithoutAlpha = bitmapInfo.rawValue & ~CGBitmapInfo.AlphaInfoMask.rawValue
-            let rawBitmapInfo = rawBitmapInfoWithoutAlpha | CGImageAlphaInfo.NoneSkipFirst.rawValue
-            bitmapInfo = CGBitmapInfo(rawValue: rawBitmapInfo)
-        case .PremultipliedFirst, .PremultipliedLast, .NoneSkipFirst, .NoneSkipLast:
-            break
-        case .Only, .Last, .First: // Unsupported
-            return self
+    func predrawnImageFromImage(imageToPredraw:UIImage) -> UIImage? {
+        guard let colorSpaceDeviceRGBRef = CGColorSpaceCreateDeviceRGB() else {
+            print("Failed to `CGColorSpaceCreateDeviceRGB` for image: \(imageToPredraw)")
+            return nil
         }
 
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let pixelSize = CGSizeMake(self.size.width * self.scale, self.size.height * self.scale)
-        guard let context = CGBitmapContextCreate(nil, Int(ceil(pixelSize.width)), Int(ceil(pixelSize.height)), CGImageGetBitsPerComponent(originalImageRef), 0, colorSpace, bitmapInfo.rawValue) else {
-            return self
+        let numberOfComponents = CGColorSpaceGetNumberOfComponents(colorSpaceDeviceRGBRef) + 1
+        let width = imageToPredraw.size.width
+        let height = imageToPredraw.size.height
+        let bitsPerComponent = Int(CHAR_BIT)
+
+        let bitsPerPixel = bitsPerComponent * numberOfComponents
+        let bytesPerPixel = bitsPerPixel/Int(BYTE_SIZE)
+        let bytesPerRow = bytesPerPixel * Int(width)
+
+        let bitmapInfo:CGBitmapInfo = CGBitmapInfo.ByteOrderDefault
+
+        var alphaInfo = CGImageGetAlphaInfo(imageToPredraw.CGImage)
+
+        switch alphaInfo {
+        case .None, .Only   : alphaInfo = CGImageAlphaInfo.NoneSkipFirst
+        case .First         : alphaInfo = CGImageAlphaInfo.PremultipliedFirst
+        case .Last          : alphaInfo = CGImageAlphaInfo.PremultipliedLast
+        default             : break
         }
 
-        let imageRect = CGRectMake(0, 0, pixelSize.width, pixelSize.height)
-        UIGraphicsPushContext(context)
+        let info = bitmapInfo.rawValue | alphaInfo.rawValue
 
-        CGContextTranslateCTM(context, 0, pixelSize.height)
-        CGContextScaleCTM(context, 1.0, -1.0)
+        let bitmapContextRef = CGBitmapContextCreate(nil, Int(width), Int(height), bitsPerComponent, bytesPerRow, colorSpaceDeviceRGBRef, info)
 
-        self.drawInRect(imageRect)
-        UIGraphicsPopContext()
-
-        guard let decompressedImageRef = CGBitmapContextCreateImage(context) else {
-            return self
+        if bitmapContextRef == nil {
+            print("Failed to `CGBitmapContextCreate` with color space \(colorSpaceDeviceRGBRef) and parameters (width: \(width) height: \(height) bitsPerComponent: \(bitsPerComponent) bytesPerRow: \(bytesPerRow)) for image \(imageToPredraw)")
+            return nil
         }
 
-        return UIImage(CGImage: decompressedImageRef, scale:UIScreen.mainScreen().scale, orientation:UIImageOrientation.Up)
+        CGContextDrawImage(bitmapContextRef, CGRectMake(0, 0, imageToPredraw.size.width, imageToPredraw.size.height), imageToPredraw.CGImage)
+
+        let predrawnImageRef = CGBitmapContextCreateImage(bitmapContextRef)
+
+        return UIImage(CGImage: predrawnImageRef!, scale: imageToPredraw.scale, orientation: imageToPredraw.imageOrientation)
     }
 }
