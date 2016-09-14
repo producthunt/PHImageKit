@@ -24,10 +24,10 @@
 
 import Foundation
 
-extension NSDate {
+extension Date {
 
     func ik_isExpired() -> Bool {
-        return self.compare(NSDate(timeIntervalSinceNow: -60 * 60 * 24 * 7)) == .OrderedAscending
+        return self.compare(Date(timeIntervalSinceNow: -60 * 60 * 24 * 7)) == .orderedAscending
     }
 
 }

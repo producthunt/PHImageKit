@@ -25,13 +25,13 @@
 import UIKit
 
 /// PHImageView subclass of `UIImageView`. Set `url` and image view will handle everything for you
-public class PHImageView: UIImageView {
+open class PHImageView: UIImageView {
 
     /// Images Asset URL - If there is already ongoing request will be cancelled
-    public var url : NSURL? {
+    open var url : URL? {
         didSet {
             if let oldValue = oldValue {
-                if let url = url where url.absoluteString == oldValue.absoluteString {
+                if let url = url , url.absoluteString == oldValue.absoluteString {
                     return
                 }
 
@@ -51,7 +51,7 @@ public class PHImageView: UIImageView {
     }
 
     /// Boolean that indicates should progress view
-    public var showProgress = true {
+    open var showProgress = true {
         willSet {
             if let progressView = progressView {
                 progressView.removeFromSuperview()
@@ -65,10 +65,10 @@ public class PHImageView: UIImageView {
     }
 
     /// Should transition of the image should be animated (TransitionCrossDissolve).
-    public var animatedImageTransition = true
+    open var animatedImageTransition = true
 
     /// Animated image
-    public var animatedImage: PHAnimatedImage! {
+    open var animatedImage: PHAnimatedImage! {
         didSet {
             guard let animatedImage = animatedImage else {
                 stopAnimating()
@@ -77,7 +77,7 @@ public class PHImageView: UIImageView {
 
             super.image = nil
 
-            super.highlighted = false
+            super.isHighlighted = false
 
             invalidateIntrinsicContentSize()
 
@@ -99,18 +99,18 @@ public class PHImageView: UIImageView {
         }
     }
 
-    private var downloadKey : String?
+    fileprivate var downloadKey : String?
 
-    private var progressView : PHProgressView?
-    private var currentFrame: UIImage!
-    private var currentFrameIndex = 0
+    fileprivate var progressView : PHProgressView?
+    fileprivate var currentFrame: UIImage!
+    fileprivate var currentFrameIndex = 0
 
-    private var loopCountdown = Int.max
-    private var accumulator: NSTimeInterval = 0
-    private var displayLink: CADisplayLink!
+    fileprivate var loopCountdown = Int.max
+    fileprivate var accumulator: TimeInterval = 0
+    fileprivate var displayLink: CADisplayLink!
 
-    private var shouldAnimate = false
-    private var needsDisplayWhenImageBecomesAvailable = false
+    fileprivate var shouldAnimate = false
+    fileprivate var needsDisplayWhenImageBecomesAvailable = false
 
     //MARK: Life cycle
 
@@ -134,17 +134,17 @@ public class PHImageView: UIImageView {
         commonInit()
     }
 
-    public override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         commonInit()
     }
 
-    public func commonInit() {
+    open func commonInit() {
         showProgress = true
 
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: #selector(PHImageView.stopAnimating), name: UIApplicationDidEnterBackgroundNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(PHImageView.startAnimating), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(PHImageView.stopAnimating), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(PHImageView.startAnimating), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
 
     deinit {
@@ -152,12 +152,12 @@ public class PHImageView: UIImageView {
             displayLink.invalidate()
         }
 
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
     //MARK: Override
 
-    public override func didMoveToSuperview() {
+    open override func didMoveToSuperview() {
         super.didMoveToSuperview()
 
         self.updateShouldAnimate()
@@ -168,7 +168,7 @@ public class PHImageView: UIImageView {
         }
     }
 
-    public override func didMoveToWindow() {
+    open override func didMoveToWindow() {
         super.didMoveToWindow()
 
         self.updateShouldAnimate()
@@ -179,15 +179,15 @@ public class PHImageView: UIImageView {
         }
     }
 
-    public override func intrinsicContentSize() -> CGSize {
+    open override var intrinsicContentSize : CGSize {
         guard let image = animatedImage, let poster = image.posterImage else {
-            return super.intrinsicContentSize()
+            return super.intrinsicContentSize
         }
 
         return poster.size
     }
 
-    public override var image:UIImage? {
+    open override var image:UIImage? {
         get {
             return self.currentFrame ?? super.image
         } set {
@@ -199,7 +199,7 @@ public class PHImageView: UIImageView {
         }
     }
 
-    public override func startAnimating() {
+    open override func startAnimating() {
         guard let _ = animatedImage else {
             super.startAnimating()
             return
@@ -210,58 +210,58 @@ public class PHImageView: UIImageView {
             displayLink = CADisplayLink(target: weakProxy, selector: #selector(PHImageView.displayDidRefresh(_:)))
 
             let mode : String = {
-                var modeToReturn =  NSDefaultRunLoopMode
+                var modeToReturn =  RunLoopMode.defaultRunLoopMode
 
-                if NSProcessInfo.processInfo().activeProcessorCount > 1 {
-                    modeToReturn = NSRunLoopCommonModes
+                if ProcessInfo.processInfo.activeProcessorCount > 1 {
+                    modeToReturn = RunLoopMode.commonModes
                 }
 
-                return modeToReturn
+                return modeToReturn.rawValue
             }()
 
-            displayLink.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: mode)
+            displayLink.add(to: RunLoop.main, forMode: RunLoopMode(rawValue: mode))
         }
 
-        displayLink.paused = false
+        displayLink.isPaused = false
     }
 
-    public override func stopAnimating() {
+    open override func stopAnimating() {
         if self.animatedImage != nil &&  displayLink != nil {
-            self.displayLink.paused = true
+            self.displayLink.isPaused = true
         } else {
             super.stopAnimating()
         }
     }
 
-    public override func isAnimating() -> Bool {
+    open override var isAnimating : Bool {
         var isAnimating = false
 
         if self.animatedImage != nil {
-            isAnimating = self.displayLink != nil && !self.displayLink.paused ? true : false
+            isAnimating = self.displayLink != nil && !self.displayLink.isPaused ? true : false
         }
 
         return isAnimating
     }
 
-    public override var highlighted: Bool {
+    open override var isHighlighted: Bool {
         set {
             if self.animatedImage != nil {
-                super.highlighted = false
+                super.isHighlighted = false
             }
         }
         get {
-            return super.highlighted
+            return super.isHighlighted
         }
  
     }
 
-    public override func displayLayer(layer: CALayer) {
-        layer.contents = image?.CGImage
+    open override func display(_ layer: CALayer) {
+        layer.contents = image?.cgImage
     }
 
     //MARK: Private
 
-    private func loadImage(url: NSURL) {
+    fileprivate func loadImage(_ url: URL) {
         downloadKey = PHManager.sharedInstance.imageWithUrl(url, progress: { [weak self] (percent) in
 
             self?.setProgress(percent)
@@ -274,7 +274,7 @@ public class PHImageView: UIImageView {
         }
     }
 
-    private func setProgress(percent: CGFloat) {
+    fileprivate func setProgress(_ percent: CGFloat) {
         ik_dispatch_main_queue({ () -> Void in
             if let progressView = self.progressView {
                 progressView.setProgress(percent)
@@ -282,34 +282,34 @@ public class PHImageView: UIImageView {
         })
     }
 
-    private func setImage(object: PHImageObject) {
+    fileprivate func setImage(_ object: PHImageObject) {
         ik_dispatch_main_queue {
             if !self.animatedImageTransition {
-                self.willChangeValueForKey("image")
+                self.willChangeValue(forKey: "image")
                 super.image = object.image
                 self.animatedImage = object.gif
-                self.didChangeValueForKey("image")
+                self.didChangeValue(forKey: "image")
 
                 return
             }
 
-            UIView.transitionWithView(self, duration: 0.15, options: .TransitionCrossDissolve, animations: {
-                self.willChangeValueForKey("image")
+            UIView.transition(with: self, duration: 0.15, options: .transitionCrossDissolve, animations: {
+                self.willChangeValue(forKey: "image")
                 super.image = object.image
                 self.animatedImage = object.gif
-                self.didChangeValueForKey("image")
+                self.didChangeValue(forKey: "image")
 
                 }, completion: nil)
         }
     }
 
-    private func updateShouldAnimate() {
+    fileprivate func updateShouldAnimate() {
         self.shouldAnimate = self.animatedImage != nil && self.window != nil && self.superview != nil ? true : false
     }
 
     //MARK: Animation related
 
-    func displayDidRefresh(displayLink:CADisplayLink) {
+    func displayDidRefresh(_ displayLink:CADisplayLink) {
         if shouldAnimate == false {
             return
         }
@@ -323,7 +323,7 @@ public class PHImageView: UIImageView {
 
             accumulator = accumulator + Double(displayLink.duration)
 
-            let delayTime =  NSTimeInterval(delayTimeNumber)
+            let delayTime =  TimeInterval(delayTimeNumber)
             while accumulator >= delayTime {
                 accumulator = accumulator - delayTime
                 currentFrameIndex += 1
@@ -345,7 +345,7 @@ public class PHImageView: UIImageView {
         }
     }
 
-    private func animatedFrameForCurrentIndex() {
+    fileprivate func animatedFrameForCurrentIndex() {
         currentFrame = animatedImage.imageFrame(atIndex: currentFrameIndex)
 
         if image != nil && needsDisplayWhenImageBecomesAvailable  {

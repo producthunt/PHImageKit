@@ -29,7 +29,7 @@ class PHImageKitDetailsViewController: UIViewController {
 
     @IBOutlet weak var imageView: PHImageView!
 
-    var url : NSURL?
+    var url : URL?
 
     override func viewDidLoad() {
         super.viewDidLoad()

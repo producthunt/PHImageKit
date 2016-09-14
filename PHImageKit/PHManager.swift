@@ -24,20 +24,20 @@
 
 import UIKit
 
-let imageKitDomain = "\(NSBundle.mainBundle().bundleIdentifier!).imageKit"
+let imageKitDomain = "\(Bundle.main.bundleIdentifier!).imageKit"
 
 public typealias PHVoidCompletion = () -> Void
-public typealias PHProgressCompletion = (percent : CGFloat) -> Void
-public typealias PHManagerCompletion = (object: PHImageObject?) -> Void
+public typealias PHProgressCompletion = (_ percent : CGFloat) -> Void
+public typealias PHManagerCompletion = (_ object: PHImageObject?) -> Void
 
 /// PHManager is responsible for downloading images, cancel ongoing reques and handle cache.
-public class PHManager: NSObject {
+open class PHManager: NSObject {
 
     /// Shared Instance
-    public static let sharedInstance = PHManager()
+    open static let sharedInstance = PHManager()
 
-    private let downloader = PHDownloader()
-    private let cache = PHCache()
+    fileprivate let downloader = PHDownloader()
+    fileprivate let cache = PHCache()
 
     /**
     Get image from given url. If image is in cache will be taken from there.
@@ -48,7 +48,7 @@ public class PHManager: NSObject {
 
     - returns: Unique generated download key. It can be used to cancel request.
     */
-    public func imageWithUrl(url: NSURL, progress: PHProgressCompletion, completion: PHManagerCompletion) -> String? {
+    open func imageWithUrl(_ url: URL, progress: PHProgressCompletion, completion: @escaping PHManagerCompletion) -> String? {
         if imageFromCache(url, completion: completion) {
             return nil;
         }
@@ -62,9 +62,9 @@ public class PHManager: NSObject {
      - parameter url:        Image URL
      - parameter completion: Completion closure it returns image
      */
-    public func imageWithUrl(url: NSURL, completion: ((image: UIImage?) -> Void)) {
+    open func imageWithUrl(_ url: URL, completion: @escaping ((_ image: UIImage?) -> Void)) {
         imageWithUrl(url, progress: { (percent) -> Void in }) { (object) -> Void in
-            completion(image: object?.image)
+            completion(object?.image)
         }
     }
 
@@ -74,10 +74,10 @@ public class PHManager: NSObject {
      - parameter url:       Image URL
      - parameter comletion: Completion closure returns raw image data
      */
-    public func imageData(url: NSURL, comletion: ((data: NSData) -> Void)) {
+    open func imageData(_ url: URL, comletion: @escaping ((_ data: NSData) -> Void)) {
         imageWithUrl(url, progress: { (percent) -> Void in }) { (object) -> Void in
-            if let object = object, data = object.data {
-                comletion(data: data)
+            if let object = object, let data = object.data {
+                comletion(data as NSData)
             }
         }
     }
@@ -88,7 +88,7 @@ public class PHManager: NSObject {
      - parameter url: Image URL
      - parameter key: Unique key returned from `imageWithUrl:`
      */
-    public func cancelImageRetrieve(url: NSURL, key: String) {
+    open func cancelImageRetrieve(_ url: URL, key: String) {
         downloader.cancel(url, key: key)
     }
 
@@ -98,7 +98,7 @@ public class PHManager: NSObject {
      - parameter fileCache:  If set to `true` file cache will be removed too.
      - parameter completion: Optional completion closure.
      */
-    public func purgeCache(includingFileCache fileCache: Bool, completion: PHVoidCompletion? = nil) {
+    open func purgeCache(includingFileCache fileCache: Bool, completion: PHVoidCompletion? = nil) {
         cache.clearMemoryCache()
 
         if fileCache {
@@ -111,7 +111,7 @@ public class PHManager: NSObject {
 
      - parameter completion: Optional completion closure
      */
-    public func purgeFileCache(completion: PHVoidCompletion? = nil) {
+    open func purgeFileCache(_ completion: PHVoidCompletion? = nil) {
         cache.clearFileChache(completion)
     }
 
@@ -122,7 +122,7 @@ public class PHManager: NSObject {
         - memoryCacheSize: Size for memory cache in MB. Minimum 50 mb. maximum 250 mb. Default is 50 mb.
         - fileCacheSize: Size for file cache in MB. Minimum 50 mb. maximum 500 mb. Default is 200 mb.
     */
-    public func setCacheSize(memoryCacheSize: UInt, fileCacheSize: UInt) {
+    open func setCacheSize(_ memoryCacheSize: UInt, fileCacheSize: UInt) {
         cache.setCacheSize(memoryCacheSize, fileCacheSize: fileCacheSize)
     }
 
@@ -131,11 +131,11 @@ public class PHManager: NSObject {
 
      - returns: Size of cache in kb.
      */
-    public func getCacheSize() -> UInt {
+    open func getCacheSize() -> UInt {
         return cache.cacheSize()
     }
 
-    private func imageFromCache(url: NSURL, completion: PHManagerCompletion) -> Bool {
+    fileprivate func imageFromCache(_ url: URL, completion: @escaping PHManagerCompletion) -> Bool {
         if cache.isImageCached(url) {
             cache.getImage(url, completion: completion)
             return true
@@ -144,13 +144,13 @@ public class PHManager: NSObject {
         return false
     }
 
-    private func imageFromWeb(url: NSURL,progress: PHProgressCompletion , completion: PHManagerCompletion) -> String? {
+    fileprivate func imageFromWeb(_ url: URL,progress: PHProgressCompletion , completion: @escaping PHManagerCompletion) -> String? {
         return downloader.download(url, progress: progress) { (imageObject, error) in
             if let object = imageObject {
                 self.cache.saveImage(object, url: url)
             }
 
-            completion(object: imageObject)
+            completion(imageObject)
         }
     }
 }

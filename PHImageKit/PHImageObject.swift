@@ -24,13 +24,13 @@
 
 import UIKit
 
-public class PHImageObject {
+open class PHImageObject {
 
-    public var image: UIImage?
-    public var gif: PHAnimatedImage?
-    public var data: NSData?
+    open var image: UIImage?
+    open var gif: PHAnimatedImage?
+    open var data: Data?
 
-    public init?(data: NSData? = nil) {
+    public init?(data: Data? = nil) {
         guard let data = data else {
             return nil
         }
@@ -39,10 +39,10 @@ public class PHImageObject {
 
         switch data.ik_imageFormat {
 
-        case .PNG, .JPEG :
-            image = UIImage(data: data, scale: UIScreen.mainScreen().scale) ?? UIImage()
+        case .png, .jpeg :
+            image = UIImage(data: data as Data, scale: UIScreen.main.scale) ?? UIImage()
 
-        case .GIF :
+        case .gif :
             gif = PHAnimatedImage(initWithAnimatedGIFData: data)
 
 

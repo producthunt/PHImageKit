@@ -26,17 +26,17 @@ import UIKit
 
 protocol PHCacheProtocol {
 
-    func saveImageObject(object: PHImageObject, key: String, completion: PHVoidCompletion?)
+    func saveImageObject(_ object: PHImageObject, key: String, completion: PHVoidCompletion?)
 
-    func getImageObject(key: String, completion: PHManagerCompletion)
+    func getImageObject(_ key: String, completion: PHManagerCompletion)
 
-    func isCached(key: String) -> Bool
+    func isCached(_ key: String) -> Bool
 
-    func removeImageObject(key: String, completion: PHVoidCompletion?)
+    func removeImageObject(_ key: String, completion: PHVoidCompletion?)
 
-    func clear(completion: PHVoidCompletion?)
+    func clear(_ completion: PHVoidCompletion?)
 
-    func setCacheSize(size: UInt)
+    func setCacheSize(_ size: UInt)
 
     func cacheSize() -> UInt
     

@@ -24,11 +24,11 @@
 
 import Foundation
 
-func ik_dispatch_main_queue(closure: PHVoidCompletion) {
-    if NSThread.isMainThread() {
+func ik_dispatch_main_queue(_ closure: @escaping PHVoidCompletion) {
+    if Thread.isMainThread {
         closure()
     } else {
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             closure()
         }
     }
