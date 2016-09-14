@@ -18,7 +18,7 @@ class PHAnimatedImageTests: XCTestCase {
     }
 
     func testThatItWontCrashIfInitWithWrongData() {
-        let image = PHAnimatedImage(initWithAnimatedGIFData: NSData())
+        let image = PHAnimatedImage(initWithAnimatedGIFData: Data())
         XCTAssertNotNil(image)
     }
 

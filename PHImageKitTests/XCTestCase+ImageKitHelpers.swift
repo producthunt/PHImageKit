@@ -12,15 +12,15 @@ import XCTest
 
 extension XCTestCase {
 
-    func ik_expectation(description: String, fulfill: (_ expectation: XCTestExpectation) -> Void) {
-        let expectation = expectationWithDescription(description)
+    func ik_expectation(_ description: String, fulfill: (_ expectation: XCTestExpectation) -> Void) {
+        let expectation = self.expectation(description: description)
 
-        fulfill(expectation: expectation)
+        fulfill(expectation)
 
-        waitForExpectationsWithTimeout(5, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
-    func ik_createImage(color: UIColor, size: CGSize) -> UIImage {
+    func ik_createImage(_ color: UIColor, size: CGSize) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
         color.setFill()
@@ -31,7 +31,7 @@ extension XCTestCase {
     }
 
     func ik_imageData() -> Data {
-        let image = ik_createImage(color: UIColor.white, size: CGSize(width: 10, height: 10))
+        let image = ik_createImage(UIColor.white, size: CGSize(width: 10, height: 10))
         return UIImagePNGRepresentation(image)!
     }
 

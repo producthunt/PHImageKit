@@ -47,15 +47,14 @@ class PHFileCache: NSObject, PHCacheProtocol {
                 self.fileManager.createFile(atPath: self.pathFromKey(key), contents: data as Data, attributes: nil)
             }
 
-            if let completion = completion {
-                completion()
-            }
+            completion?()
         }
     }
 
     func getImageObject(_ key: String, completion: @escaping PHManagerCompletion) {
         ioDispatch {
-            let data = try? Data(contentsOf: URL(string: self.pathFromKey(key))!)
+            let url = URL(fileURLWithPath: self.pathFromKey(key))
+            let data = try? Data(contentsOf: url)
             completion(PHImageObject(data: data))
         }
     }
