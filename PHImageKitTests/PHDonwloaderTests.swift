@@ -32,13 +32,13 @@ class PHDonwloaderTests: XCTestCase {
     }
 
     func testDownloadImage() {
-        let url = NSURL(string: urlPath)!
+        let url = URL(string: urlPath)!
 
         let expectedData = ik_imageData()
 
-        stubRequest("GET", urlPath).andReturn(200).withBody(expectedData)
+        stubRequest("GET", urlPath as LSMatcheable!).andReturn(200)?.withBody(expectedData)
 
-        ik_expectation("Image download expectation") { (expectation) -> Void in
+        ik_expectation(description: "Image download expectation") { (expectation) -> Void in
 
             self.downloader.download(url, progress: { (percent) -> Void in }, completion: { (imageObject, error) -> Void in
                 XCTAssertNotNil(imageObject!.image)
@@ -54,7 +54,7 @@ class PHDonwloaderTests: XCTestCase {
 
         stubRequest("GET", urlPath)
 
-        ik_expectation("Invalid url error expectaion") { (expectation) -> Void in
+        ik_expectation(description: "Invalid url error expectaion") { (expectation) -> Void in
             self.downloader.download(url!, progress: { (percent) -> Void in }, completion: { (imageObject, error) -> Void in
                 XCTAssertNil(imageObject)
                 XCTAssertEqual(error, NSError.ik_invalidUrlError())

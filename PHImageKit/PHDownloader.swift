@@ -107,14 +107,15 @@ extension PHDownloader : URLSessionDataDelegate {
         }
     }
 
-    func URLSession(_ session: Foundation.URLSession, task: URLSessionTask, didCompleteWithError error: NSError?) {
+
+    func urlSession(_ session: Foundation.URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         let url = (task.originalRequest?.url)!
 
         guard let fetchObject = self.fetchObjectForKey(url) else {
             return
         }
 
-        if error?.code == NSURLErrorCancelled {
+        if error?._code == NSURLErrorCancelled {
             return
         }
 
@@ -122,7 +123,7 @@ extension PHDownloader : URLSessionDataDelegate {
 
 
         if let error = error {
-            fetchObject.failure(error);
+            fetchObject.failure(error as NSError);
         } else {
             processDispatch {
                 fetchObject.success();
@@ -130,11 +131,11 @@ extension PHDownloader : URLSessionDataDelegate {
         }
     }
 
-    func URLSession(_ session: Foundation.URLSession, dataTask: URLSessionDataTask, didReceiveResponse response: URLResponse, completionHandler: (Foundation.URLSession.ResponseDisposition) -> Void) {
+    private func URLSession(_ session: Foundation.URLSession, dataTask: URLSessionDataTask, didReceiveResponse response: URLResponse, completionHandler: (Foundation.URLSession.ResponseDisposition) -> Void) {
         completionHandler(Foundation.URLSession.ResponseDisposition.allow)
     }
 
-    func URLSession(_ session: Foundation.URLSession, didReceiveChallenge challenge: URLAuthenticationChallenge, completionHandler: (Foundation.URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+    private func URLSession(_ session: Foundation.URLSession, didReceiveChallenge challenge: URLAuthenticationChallenge, completionHandler: (Foundation.URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         completionHandler(.performDefaultHandling, nil)
     }
     

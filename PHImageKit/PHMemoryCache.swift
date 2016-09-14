@@ -44,7 +44,7 @@ class PHMemoryCache: NSCache<AnyObject, AnyObject>, PHCacheProtocol {
         }
     }
 
-    func getImageObject(_ key: String, completion: PHManagerCompletion) {
+    func getImageObject(_ key: String, completion: @escaping PHManagerCompletion) {
         guard let image = object(forKey: key as AnyObject) as? UIImage else {
             completion(nil)
             return
@@ -65,11 +65,11 @@ class PHMemoryCache: NSCache<AnyObject, AnyObject>, PHCacheProtocol {
         removeAllObjects()
     }
 
-    func setCacheSize(_ size: UInt) {
-        totalCostLimit = max(50, min(Int(size), 250)) * 1024 * 1024
+    func setCacheSize(_ size: Int) {
+        totalCostLimit = max(50, min(size, 250)) * 1024 * 1024
     }
 
-    func cacheSize() -> UInt {
+    func cacheSize() -> Int {
         return 0
     }
     

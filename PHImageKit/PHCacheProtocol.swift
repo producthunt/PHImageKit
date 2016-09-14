@@ -28,7 +28,7 @@ protocol PHCacheProtocol {
 
     func saveImageObject(_ object: PHImageObject, key: String, completion: PHVoidCompletion?)
 
-    func getImageObject(_ key: String, completion: PHManagerCompletion)
+    func getImageObject(_ key: String, completion: @escaping PHManagerCompletion)
 
     func isCached(_ key: String) -> Bool
 
@@ -36,8 +36,8 @@ protocol PHCacheProtocol {
 
     func clear(_ completion: PHVoidCompletion?)
 
-    func setCacheSize(_ size: UInt)
+    func setCacheSize(_ size: Int)
 
-    func cacheSize() -> UInt
+    func cacheSize() -> Int
     
 }

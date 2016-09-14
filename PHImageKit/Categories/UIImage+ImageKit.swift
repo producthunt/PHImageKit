@@ -47,7 +47,7 @@ extension UIImage {
         let bytesPerPixel = bitsPerPixel/Int(BYTE_SIZE)
         let bytesPerRow = bytesPerPixel * Int(width)
 
-        let bitmapInfo:CGBitmapInfo = CGBitmapInfo.byteOrderDefault
+        let bitmapInfo:CGBitmapInfo = []
 
         var alphaInfo = imageToPredraw.cgImage!.alphaInfo
 

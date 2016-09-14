@@ -48,7 +48,7 @@ open class PHManager: NSObject {
 
     - returns: Unique generated download key. It can be used to cancel request.
     */
-    open func imageWithUrl(_ url: URL, progress: PHProgressCompletion, completion: @escaping PHManagerCompletion) -> String? {
+    open func imageWithUrl(_ url: URL, progress: @escaping PHProgressCompletion, completion: @escaping PHManagerCompletion) -> String? {
         if imageFromCache(url, completion: completion) {
             return nil;
         }
@@ -63,7 +63,7 @@ open class PHManager: NSObject {
      - parameter completion: Completion closure it returns image
      */
     open func imageWithUrl(_ url: URL, completion: @escaping ((_ image: UIImage?) -> Void)) {
-        imageWithUrl(url, progress: { (percent) -> Void in }) { (object) -> Void in
+        let _ = imageWithUrl(url, progress: { (percent) -> Void in }) { (object) -> Void in
             completion(object?.image)
         }
     }
@@ -75,7 +75,7 @@ open class PHManager: NSObject {
      - parameter comletion: Completion closure returns raw image data
      */
     open func imageData(_ url: URL, comletion: @escaping ((_ data: NSData) -> Void)) {
-        imageWithUrl(url, progress: { (percent) -> Void in }) { (object) -> Void in
+        let _ = imageWithUrl(url, progress: { (percent) -> Void in }) { (object) -> Void in
             if let object = object, let data = object.data {
                 comletion(data as NSData)
             }
@@ -123,7 +123,7 @@ open class PHManager: NSObject {
         - fileCacheSize: Size for file cache in MB. Minimum 50 mb. maximum 500 mb. Default is 200 mb.
     */
     open func setCacheSize(_ memoryCacheSize: UInt, fileCacheSize: UInt) {
-        cache.setCacheSize(memoryCacheSize, fileCacheSize: fileCacheSize)
+        cache.setCacheSize(Int(memoryCacheSize), fileCacheSize: Int(fileCacheSize))
     }
 
     /**
@@ -144,7 +144,7 @@ open class PHManager: NSObject {
         return false
     }
 
-    fileprivate func imageFromWeb(_ url: URL,progress: PHProgressCompletion , completion: @escaping PHManagerCompletion) -> String? {
+    fileprivate func imageFromWeb(_ url: URL,progress: @escaping PHProgressCompletion , completion: @escaping PHManagerCompletion) -> String? {
         return downloader.download(url, progress: progress) { (imageObject, error) in
             if let object = imageObject {
                 self.cache.saveImage(object, url: url)

@@ -129,9 +129,10 @@ open class PHAnimatedImage: UIImage {
         requestedFrameIndexes.add(indexesToCache as IndexSet)
 
         readFrameQueue.async {
-            indexesToCache.enumerateRanges(options: .concurrent) { (range, stop) in
+
+            (indexesToCache as NSIndexSet).enumerateRanges(options: .concurrent) { (range, stop) in
                 for i in range.location ..< NSMaxRange(range) {
-                    self.cachedFramesForIndexes[i] = self.predrawnImageAtIndex(index: i)
+                    self.cachedFramesForIndexes[i] = self.predrawnImageAtIndex(i)
                     self.cachedFrameIndexes.add(i)
                     self.requestedFrameIndexes.remove(i)
                 }

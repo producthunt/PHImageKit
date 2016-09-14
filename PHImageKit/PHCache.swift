@@ -112,9 +112,9 @@ class PHCache: NSObject {
      - memoryCacheSize: Size for memory cache in MB. Minimum 50 mb. maximum 250 mb. Default is 50 mb.
      - fileCacheSize: Size for file cache in MB. Minimum 50 mb. maximum 500 mb. Default is 200 mb.
      */
-    func setCacheSize(_ memoryCacheSize: UInt, fileCacheSize: UInt) {
-        memoryCache.setCacheSize(memoryCacheSize)
-        fileCache.setCacheSize(fileCacheSize)
+    func setCacheSize(_ memoryCacheSize: Int, fileCacheSize: Int) {
+        memoryCache.setCacheSize(Int(memoryCacheSize))
+        fileCache.setCacheSize(Int(fileCacheSize))
     }
 
     /**
@@ -165,7 +165,7 @@ class PHCache: NSObject {
      - returns: Size of cached files in kb.
      */
     func cacheSize() -> UInt {
-        return fileCache.cacheSize()
+        return UInt(fileCache.cacheSize())
     }
 
     fileprivate func cacheKey(_ url: URL) -> String {

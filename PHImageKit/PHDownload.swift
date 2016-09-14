@@ -36,7 +36,7 @@ class PHDownload {
     }
 
     func addCallback(_ callback:PHCallback) -> String {
-        let key = "\(task.currentRequest?.URL?.absoluteString ?? "Unknown")-\(Date().timeIntervalSince1970)";
+        let key = "\(task.currentRequest?.url?.absoluteString ?? "Unknown")-\(Date().timeIntervalSince1970)";
 
         callbacks[key] = callback;
 

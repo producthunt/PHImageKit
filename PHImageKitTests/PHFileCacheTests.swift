@@ -23,9 +23,9 @@ class PHFileCacheTests: XCTestCase {
     func testThatItCachesImage() {
         let object = PHImageObject(data: ik_imageData())!
 
-        let key = NSURL(string: testPath)!.ik_cacheKey()
+        let key = URL(string: testPath)!.ik_cacheKey()
 
-        ik_expectation("Save in cache expectation") { (expectation) -> Void in
+        ik_expectation(description: "Save in cache expectation") { (expectation) -> Void in
             self.cache.saveImageObject(object, key: key) {
                 XCTAssertTrue(self.cache.isCached(key))
                 expectation.fulfill()
@@ -36,9 +36,9 @@ class PHFileCacheTests: XCTestCase {
     func testThatItCachesGif() {
         let object = PHImageObject(data: ik_gifData())!
 
-        let key = NSURL(string: testPath)!.ik_cacheKey()
+        let key = URL(string: testPath)!.ik_cacheKey()
 
-        ik_expectation("Save in cache expectation") { (expectation) -> Void in
+        ik_expectation(description: "Save in cache expectation") { (expectation) -> Void in
             self.cache.saveImageObject(object, key: key) {
                 XCTAssertTrue(self.cache.isCached(key))
                 expectation.fulfill()
@@ -48,9 +48,9 @@ class PHFileCacheTests: XCTestCase {
 
     func testThatItGetsCachedImage() {
         let object = PHImageObject(data: ik_imageData())!
-        let key = NSURL(string: testPath)!.ik_cacheKey()
+        let key = URL(string: testPath)!.ik_cacheKey()
 
-        ik_expectation("File cache worker expectation") { (expectation) -> Void in
+        ik_expectation(description: "File cache worker expectation") { (expectation) -> Void in
             self.cache.saveImageObject(object, key: key, completion: {
                 self.cache.getImageObject(key, completion: { (object) -> Void in
                     XCTAssertNotNil(object!.image)
@@ -64,9 +64,9 @@ class PHFileCacheTests: XCTestCase {
 
     func testThatItGetsCachedGif() {
         let object = PHImageObject(data: ik_gifData())!
-        let key = NSURL(string: testPath)!.ik_cacheKey()
+        let key = URL(string: testPath)!.ik_cacheKey()
 
-        ik_expectation("File cache worker expectation") { (expectation) -> Void in
+        ik_expectation(description: "File cache worker expectation") { (expectation) -> Void in
             self.cache.saveImageObject(object, key: key, completion: {
 
                 self.cache.getImageObject(key, completion: { (object) -> Void in
@@ -81,9 +81,9 @@ class PHFileCacheTests: XCTestCase {
 
     func testThatItRemovesCachedImage() {
         let object = PHImageObject(data: ik_imageData())!
-        let key = NSURL(string: testPath)!.ik_cacheKey()
+        let key = URL(string: testPath)!.ik_cacheKey()
 
-        ik_expectation("File cache worker expectation") { (expectation) -> Void in
+        ik_expectation(description: "File cache worker expectation") { (expectation) -> Void in
             self.cache.saveImageObject(object, key: key, completion: {
                 XCTAssertTrue(self.cache.isCached(key))
 
@@ -98,9 +98,9 @@ class PHFileCacheTests: XCTestCase {
 
     func testThatItRemovesCachedGif() {
         let object = PHImageObject(data: ik_gifData())!
-        let key = NSURL(string: testPath)!.ik_cacheKey()
+        let key = URL(string: testPath)!.ik_cacheKey()
 
-        ik_expectation("File cache worker expectation") { (expectation) -> Void in
+        ik_expectation(description: "File cache worker expectation") { (expectation) -> Void in
             self.cache.saveImageObject(object, key: key, completion: {
                 XCTAssertTrue(self.cache.isCached(key))
 
@@ -113,7 +113,7 @@ class PHFileCacheTests: XCTestCase {
     }
 
     func testThatItRemovesAllCachedImages() {
-        ik_expectation("File cache worker expectation") { (expectation) -> Void in
+        ik_expectation(description: "File cache worker expectation") { (expectation) -> Void in
 
             let group = dispatch_group_create()
 
@@ -149,9 +149,9 @@ class PHFileCacheTests: XCTestCase {
     func testThatReturnsCachedSize() {
         let object = PHImageObject(data: ik_imageData())!
 
-        let key = NSURL(string: testPath)!.ik_cacheKey()
+        let key = URL(string: testPath)!.ik_cacheKey()
 
-        ik_expectation("Save in cache expectation") { (expectation) -> Void in
+        ik_expectation(description: "Save in cache expectation") { (expectation) -> Void in
             self.cache.saveImageObject(object, key: key) {
                 XCTAssertTrue(self.cache.cacheSize() > 0)
                 expectation.fulfill()

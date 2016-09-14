@@ -29,7 +29,7 @@ class PHFileCache: NSObject, PHCacheProtocol {
     fileprivate let ioQueue: DispatchQueue = DispatchQueue(label: imageKitDomain  + ".ioQueue")
     fileprivate var fileManager = FileManager()
     fileprivate var directory : String!
-    fileprivate var maxDiskCacheSize : UInt = 0
+    fileprivate var maxDiskCacheSize : Int = 0
 
     override init() {
         super.init()
@@ -55,8 +55,8 @@ class PHFileCache: NSObject, PHCacheProtocol {
 
     func getImageObject(_ key: String, completion: @escaping PHManagerCompletion) {
         ioDispatch {
-            let data = Data(contentsOf: URL(string: self.pathFromKey(key))!)
-            completion(object: PHImageObject(data: data))
+            let data = try? Data(contentsOf: URL(string: self.pathFromKey(key))!)
+            completion(PHImageObject(data: data))
         }
     }
 
@@ -88,8 +88,8 @@ class PHFileCache: NSObject, PHCacheProtocol {
 
     func clearExpiredImages(_ completion: PHVoidCompletion? = nil) {
         ioDispatch {
-            let targetSize: UInt = self.maxDiskCacheSize/2
-            var totalSize: UInt = 0
+            let targetSize: Int = self.maxDiskCacheSize/2
+            var totalSize: Int = 0
 
             for object in self.getCacheObjects() {
                 if object.modificationDate.ik_isExpired() || totalSize > targetSize {
@@ -105,15 +105,22 @@ class PHFileCache: NSObject, PHCacheProtocol {
         }
     }
 
-    func setCacheSize(_ size: UInt) {
+    func setCacheSize(_ size: Int) {
         maxDiskCacheSize = max(50, min(size, 500)) * 1024 * 1024
     }
 
-    func cacheSize() -> UInt {
-        var totalSize: UInt = 0
+    func cacheSize() -> Int {
+        var totalSize: Int = 0
 
         getFiles().forEach {
-            totalSize += self.getResourceValue($0, key: URLResourceKey.totalFileAllocatedSizeKey.rawValue, defaultValue: NSNumber()).uintValue
+
+            do {
+                let resourceValues = try $0.resourceValues(forKeys: [URLResourceKey.totalFileAllocatedSizeKey])
+                totalSize += resourceValues.totalFileAllocatedSize ?? 0
+
+            } catch (let error) {
+                print(error)
+            }
         }
 
         return totalSize
@@ -159,8 +166,16 @@ class PHFileCache: NSObject, PHCacheProtocol {
             let object = PHFileCacheObject()
 
             object.url = url
-            object.modificationDate = self.getResourceValue(url, key: URLResourceKey.contentModificationDateKey, defaultValue: NSDate())
-            object.size = self.getResourceValue(url, key: URLResourceKey.totalFileAllocatedSizeKey.rawValue, defaultValue: NSNumber()).uintValue
+
+            do {
+                let resourceValues = try url.resourceValues(forKeys: [URLResourceKey.contentModificationDateKey, URLResourceKey.totalFileAllocatedSizeKey])
+
+                object.modificationDate = resourceValues.contentModificationDate ?? Date()
+                object.size = resourceValues.totalFileAllocatedSize ?? 0
+
+            } catch (let error) {
+                print(error)
+            }
 
             return object
             }.sorted(by: {
@@ -168,23 +183,12 @@ class PHFileCache: NSObject, PHCacheProtocol {
             })
     }
 
-    fileprivate func getResourceValue<T:AnyObject>(_ url: URL, key: String, defaultValue: T) -> T {
-        var value: AnyObject?
-        try! (url as! NSURL).getResourceValue(&value, forKey: URLResourceKey(rawValue: key))
-
-        if let value = value as? T {
-            return value
-        }
-        
-        return defaultValue
-    }
-    
 }
 
 class PHFileCacheObject {
     
     var url : URL!
-    var size : UInt = 0
+    var size : Int = 0
     var modificationDate = Date()
     
 }

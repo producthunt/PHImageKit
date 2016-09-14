@@ -1,9 +1,8 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'PHImageKit' do
 
-end
-
-target 'PHImageKitTests' do
-    pod 'Nocilla'
+    target 'PHImageKitTests' do
+        pod 'Nocilla'
+    end
 end
