@@ -27,7 +27,7 @@ class PHImageObjectTests: XCTestCase {
     }
 
     func testThatItReturnsNilForInvalidData() {
-        let imageObject = PHImageObject(data: NSData())
+        let imageObject = PHImageObject(data: Data() as Data)
         XCTAssertNil(imageObject)
     }
 

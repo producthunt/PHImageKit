@@ -25,8 +25,8 @@
 import UIKit
 
 public enum DataType {
-    case GIF
-    case Image
+    case gif
+    case image
 }
 
 protocol PHImageKitDataSourceDelegate {
@@ -35,23 +35,23 @@ protocol PHImageKitDataSourceDelegate {
 
 class PHImageKitDataSource: NSObject {
 
-    var content = [NSURL]()
+    var content = [URL]()
 
     var delegate:PHImageKitDataSourceDelegate?
 
     func loadData(withType type: DataType) {
 
         switch type {
-        case .GIF:
-            content = gifPaths().map({ NSURL(string: $0)! })
-        case .Image:
-            content = imagePaths().map({ NSURL(string: $0)! })
+        case .gif:
+            content = gifPaths().map({ URL(string: $0)! })
+        case .image:
+            content = imagePaths().map({ URL(string: $0)! })
         }
 
         delegate?.contentChanged()
     }
 
-    private func gifPaths() -> [String] {
+    fileprivate func gifPaths() -> [String] {
         return [
             "http://media1.giphy.com/media/QgcQLZa6glP2w/200w.gif",
             "http://media1.giphy.com/media/wDs4w9nojvmG4/200w.gif",
@@ -80,7 +80,7 @@ class PHImageKitDataSource: NSObject {
         ]
     }
 
-    private func imagePaths() -> [String] {
+    fileprivate func imagePaths() -> [String] {
         return [
             "https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg",
             "http://beforeitsnews.com/contributor/upload/486248/images/cat-funny-5.jpg",

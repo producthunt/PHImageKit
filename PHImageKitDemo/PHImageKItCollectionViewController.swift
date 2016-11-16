@@ -31,23 +31,23 @@ class PHImageKItCollectionViewController: UICollectionViewController, PHImageKit
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
 
-    private let imageDataSource = PHImageKitDataSource()
+    fileprivate let imageDataSource = PHImageKitDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        imageDataSource.loadData(withType: DataType.GIF)
+        imageDataSource.loadData(withType: DataType.gif)
         imageDataSource.delegate = self
     }
 
     // MARK: UICollectionViewDataSource
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageDataSource.content.count
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PHImageKitCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PHImageKitCell
     
         cell.imageView.url = imageDataSource.content[indexPath.row]
 
@@ -56,15 +56,15 @@ class PHImageKItCollectionViewController: UICollectionViewController, PHImageKit
 
     // MARK: Actions
 
-    @IBAction func changeSelectedSegmentAction(sender: UISegmentedControl) {
-        imageDataSource.loadData(withType: sender.selectedSegmentIndex == 0 ? DataType.GIF : DataType.Image)
+    @IBAction func changeSelectedSegmentAction(_ sender: UISegmentedControl) {
+        imageDataSource.loadData(withType: sender.selectedSegmentIndex == 0 ? DataType.gif : DataType.image)
     }
 
-    @IBAction func reload(sender: AnyObject) {
+    @IBAction func reload(_ sender: AnyObject) {
         contentChanged()
     }
 
-    @IBAction func clearCache(sender: AnyObject) {
+    @IBAction func clearCache(_ sender: AnyObject) {
         PHManager.sharedInstance.purgeCache(includingFileCache: true)
     }
 
@@ -76,10 +76,10 @@ class PHImageKItCollectionViewController: UICollectionViewController, PHImageKit
 
     // MARK: Segue
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetails" {
-            if let destination = segue.destinationViewController as? PHImageKitDetailsViewController, let selectedIndex = collectionView?.indexPathsForSelectedItems()?.first {
-                destination.url = imageDataSource.content[selectedIndex.row]
+            if let destination = segue.destination as? PHImageKitDetailsViewController, let selectedIndex = collectionView?.indexPathsForSelectedItems?.first {
+                destination.url = imageDataSource.content[(selectedIndex as NSIndexPath).row]
             }
         }
     }

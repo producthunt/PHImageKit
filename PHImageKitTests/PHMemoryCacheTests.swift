@@ -23,7 +23,7 @@ class PHMemoryCacheTests: XCTestCase {
     func testThatItCachesImage() {
         let object = PHImageObject(data: ik_imageData())!
 
-        let key = NSURL(string: testPath)!.ik_cacheKey()
+        let key = URL(string: testPath)!.ik_cacheKey()
 
         cache.saveImageObject(object, key: key)
 
@@ -33,7 +33,7 @@ class PHMemoryCacheTests: XCTestCase {
     func testThatItCachesNotSaveGif() {
         let object = PHImageObject(data: ik_gifData())!
 
-        let key = NSURL(string: testPath)!.ik_cacheKey()
+        let key = URL(string: testPath)!.ik_cacheKey()
 
         cache.saveImageObject(object, key: key)
 
@@ -43,7 +43,7 @@ class PHMemoryCacheTests: XCTestCase {
     func testThatItGetsCachedImage() {
         let object = PHImageObject(data: ik_imageData())!
 
-        let key = NSURL(string: testPath)!.ik_cacheKey()
+        let key = URL(string: testPath)!.ik_cacheKey()
 
         cache.saveImageObject(object, key: key)
 
@@ -60,7 +60,7 @@ class PHMemoryCacheTests: XCTestCase {
     func testThatItRemovesCachedImage() {
         let object = PHImageObject(data: ik_imageData())!
 
-        let key = NSURL(string: testPath)!.ik_cacheKey()
+        let key = URL(string: testPath)!.ik_cacheKey()
 
         cache.saveImageObject(object, key: key)
 
@@ -74,9 +74,9 @@ class PHMemoryCacheTests: XCTestCase {
     func testThatItRemovesAllCachedImages() {
         var keys = [String]()
         for i in 0...5 {
-            let image = ik_createImage(UIColor.whiteColor(), size: CGSize(width: 1+i, height: 1+1))
+            let image = ik_createImage(UIColor.white, size: CGSize(width: 1+i, height: 1+1))
             let object = PHImageObject(data: UIImagePNGRepresentation(image))!
-            let key = NSURL(string: "https://example.com" + "\(i)")!.ik_cacheKey()
+            let key = URL(string: "https://example.com" + "\(i)")!.ik_cacheKey()
 
             keys.append(key)
 

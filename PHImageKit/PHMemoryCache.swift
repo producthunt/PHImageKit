@@ -24,7 +24,7 @@
 
 import UIKit
 
-class PHMemoryCache: NSCache, PHCacheProtocol {
+class PHMemoryCache: NSCache<AnyObject, AnyObject>, PHCacheProtocol {
 
     override init() {
         super.init()
@@ -38,38 +38,38 @@ class PHMemoryCache: NSCache, PHCacheProtocol {
         name = imageKitDomain + "memoryCache"
     }
 
-    func saveImageObject(object: PHImageObject, key: String, completion: PHVoidCompletion? = nil) {
+    func saveImageObject(_ object: PHImageObject, key: String, completion: PHVoidCompletion? = nil) {
         if let image = object.image {
-            self.setObject(image, forKey: key, cost: image.ik_memoryCost)
+            self.setObject(image, forKey: key as AnyObject, cost: image.ik_memoryCost)
         }
     }
 
-    func getImageObject(key: String, completion: PHManagerCompletion) {
-        guard let image = objectForKey(key) as? UIImage else {
-            completion(object: nil)
+    func getImageObject(_ key: String, completion: @escaping PHManagerCompletion) {
+        guard let image = object(forKey: key as AnyObject) as? UIImage else {
+            completion(nil)
             return
         }
 
-        completion(object: PHImageObject(image: image))
+        completion(PHImageObject(image: image))
     }
 
-    func isCached(key: String) -> Bool {
-        return objectForKey(key) != nil
+    func isCached(_ key: String) -> Bool {
+        return object(forKey: key as AnyObject) != nil
     }
 
-    func removeImageObject(key: String, completion: PHVoidCompletion? = nil) {
-        removeObjectForKey(key)
+    func removeImageObject(_ key: String, completion: PHVoidCompletion? = nil) {
+        removeObject(forKey: key as AnyObject)
     }
 
-    func clear(completion: PHVoidCompletion? = nil) {
+    func clear(_ completion: PHVoidCompletion? = nil) {
         removeAllObjects()
     }
 
-    func setCacheSize(size: UInt) {
-        totalCostLimit = max(50, min(Int(size), 250)) * 1024 * 1024
+    func setCacheSize(_ size: Int) {
+        totalCostLimit = max(50, min(size, 250)) * 1024 * 1024
     }
 
-    func cacheSize() -> UInt {
+    func cacheSize() -> Int {
         return 0
     }
     

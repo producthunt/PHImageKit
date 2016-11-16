@@ -27,18 +27,18 @@ import UIKit
 class PHProgressView: UIView {
 
     var lineWidth : CGFloat = 5
-    var arkColor = UIColor.blackColor()
+    var arkColor = UIColor.black
     var radius : CGFloat = 30 {
         didSet {
             setNeedsDisplay()
         }
     }
 
-    private let backgroundLayer = CALayer()
-    private let progressLayer = CAShapeLayer()
-    private let backgroundView = UIView()
+    fileprivate let backgroundLayer = CALayer()
+    fileprivate let progressLayer = CAShapeLayer()
+    fileprivate let backgroundView = UIView()
 
-    class func progressInSuperview(superview: UIView) -> PHProgressView {
+    class func progressInSuperview(_ superview: UIView) -> PHProgressView {
         let progressView = PHProgressView()
 
         superview.addSubview(progressView)
@@ -58,15 +58,15 @@ class PHProgressView: UIView {
         commonInit()
     }
 
-    private func commonInit() {
-        progressLayer.fillColor = UIColor.clearColor().CGColor
-        progressLayer.strokeColor = arkColor.CGColor
+    fileprivate func commonInit() {
+        progressLayer.fillColor = UIColor.clear.cgColor
+        progressLayer.strokeColor = arkColor.cgColor
         progressLayer.lineWidth = lineWidth
         progressLayer.strokeStart = 0.0
         progressLayer.strokeEnd = 0.0
 
         backgroundView.frame = self.bounds;
-        backgroundView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        backgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         backgroundView.layer.addSublayer(backgroundLayer)
 
         addSubview(backgroundView)
@@ -80,17 +80,17 @@ class PHProgressView: UIView {
         backgroundLayer.frame = bounds
 
         let path = UIBezierPath()
-        path.lineCapStyle = CGLineCap.Butt
+        path.lineCapStyle = CGLineCap.butt
         path.lineWidth = lineWidth
 
-        path.addArcWithCenter(backgroundView.center, radius: radius + lineWidth / 2, startAngle: CGFloat(-M_PI_2), endAngle: CGFloat(M_PI + M_PI_2), clockwise: true)
-        progressLayer.path = path.CGPath
+        path.addArc(withCenter: backgroundView.center, radius: radius + lineWidth / 2, startAngle: CGFloat(-M_PI_2), endAngle: CGFloat(M_PI + M_PI_2), clockwise: true)
+        progressLayer.path = path.cgPath
     }
 
-    func setProgress(progress: CGFloat) {
+    func setProgress(_ progress: CGFloat) {
         let normalizedProgress = max(0, min(progress, 1))
 
-        backgroundView.hidden = !(normalizedProgress > 0) || normalizedProgress > CGFloat.max
+        backgroundView.isHidden = !(normalizedProgress > 0) || normalizedProgress > CGFloat.greatestFiniteMagnitude
         progressLayer.strokeEnd = normalizedProgress
 
         if normalizedProgress == 1 {
@@ -101,10 +101,10 @@ class PHProgressView: UIView {
     func hide() {
         backgroundView.alpha = 1
 
-        UIView.animateWithDuration(0.1, animations: {
+        UIView.animate(withDuration: 0.1, animations: {
             self.backgroundView.alpha = 0
             }) { (finished) -> Void in
-                self.backgroundView.hidden = true
+                self.backgroundView.isHidden = true
         }
     }
     

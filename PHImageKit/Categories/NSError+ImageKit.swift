@@ -25,17 +25,17 @@
 import Foundation
 
 enum PHErrorCodes : Int {
-    case InvalidUrl     = 1
-    case InvalidData    = 2
+    case invalidUrl     = 1
+    case invalidData    = 2
 }
 
 extension NSError {
 
     class func ik_invalidUrlError() -> NSError {
-        return NSError(domain: imageKitDomain, code: PHErrorCodes.InvalidUrl.rawValue, userInfo: [NSLocalizedDescriptionKey : "Invalid URL"])
+        return NSError(domain: imageKitDomain, code: PHErrorCodes.invalidUrl.rawValue, userInfo: [NSLocalizedDescriptionKey : "Invalid URL"])
     }
 
     class func ik_invalidDataError() -> NSError {
-        return NSError(domain: imageKitDomain, code: PHErrorCodes.InvalidData.rawValue, userInfo: [NSLocalizedDescriptionKey : "Invalid Data"])
+        return NSError(domain: imageKitDomain, code: PHErrorCodes.invalidData.rawValue, userInfo: [NSLocalizedDescriptionKey : "Invalid Data"])
     }
 }

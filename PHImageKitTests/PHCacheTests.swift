@@ -13,7 +13,7 @@ import XCTest
 class PHCacheTests: XCTestCase {
 
     let cache = PHCache()
-    let baseURl = NSURL(string: "http://producthunt.com/example.jpg")!
+    let baseURl = URL(string: "http://producthunt.com/example.jpg")!
     
     override func tearDown() {
         cache.clearMemoryCache()
@@ -22,7 +22,7 @@ class PHCacheTests: XCTestCase {
     }
 
     func testThatItClearMemoryCacheIfMemoryWarning() {
-        let image   = ik_createImage(UIColor.whiteColor(), size: CGSize(width: 10, height: 10))
+        let image   = ik_createImage(UIColor.white, size: CGSize(width: 10, height: 10))
 
         let object = PHImageObject(data: UIImagePNGRepresentation(image))!
 
@@ -33,7 +33,7 @@ class PHCacheTests: XCTestCase {
 
                 XCTAssertTrue(self.cache.isImageCached(self.baseURl))
 
-                NSNotificationCenter.defaultCenter().postNotificationName(UIApplicationDidReceiveMemoryWarningNotification, object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name.UIApplicationDidReceiveMemoryWarning, object: nil)
 
                 XCTAssertFalse(self.cache.isImageCached(self.baseURl))
 

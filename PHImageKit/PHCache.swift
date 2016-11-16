@@ -26,8 +26,8 @@ import UIKit
 
 class PHCache: NSObject {
 
-    private let memoryCache = PHMemoryCache()
-    private let fileCache   = PHFileCache()
+    fileprivate let memoryCache = PHMemoryCache()
+    fileprivate let fileCache   = PHFileCache()
 
     override init() {
         super.init()
@@ -35,7 +35,7 @@ class PHCache: NSObject {
     }
 
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
     /**
@@ -45,7 +45,7 @@ class PHCache: NSObject {
      - imageObject:
      - url: Image URL. Cache key is generated from the URL.
      */
-    func saveImage(imageObject: PHImageObject, url: NSURL) {
+    func saveImage(_ imageObject: PHImageObject, url: URL) {
         let key = cacheKey(url)
 
         memoryCache.saveImageObject(imageObject, key: key)
@@ -60,7 +60,7 @@ class PHCache: NSObject {
      - url: Image URL. Cache key is generated from the URL
      - completion: Completion closure called when image is loaded
      */
-    func getImage(url: NSURL, completion: PHManagerCompletion) {
+    func getImage(_ url: URL, completion: @escaping PHManagerCompletion) {
         let key = cacheKey(url)
 
         if memoryCache.isCached(key) {
@@ -70,13 +70,13 @@ class PHCache: NSObject {
 
         fileCache.getImageObject(key) { (object) in
             guard let object = object  else {
-                completion(object: nil)
+                completion(nil)
                 return
             }
 
             self.memoryCache.saveImageObject(object, key: key)
 
-            completion(object: object)
+            completion(object)
         }
     }
 
@@ -85,7 +85,7 @@ class PHCache: NSObject {
 
      parameter url: Image URL
      */
-    func isImageCached(url: NSURL) -> Bool {
+    func isImageCached(_ url: URL) -> Bool {
         let key = cacheKey(url)
         return memoryCache.isCached(key) || fileCache.isCached(key)
     }
@@ -97,7 +97,7 @@ class PHCache: NSObject {
      - url: Image URL
      - completion: Optional completion closure
      */
-    func removeImage(url: NSURL, completion: PHVoidCompletion? = nil) {
+    func removeImage(_ url: URL, completion: PHVoidCompletion? = nil) {
         let key = cacheKey(url)
 
         memoryCache.removeImageObject(key)
@@ -112,9 +112,9 @@ class PHCache: NSObject {
      - memoryCacheSize: Size for memory cache in MB. Minimum 50 mb. maximum 250 mb. Default is 50 mb.
      - fileCacheSize: Size for file cache in MB. Minimum 50 mb. maximum 500 mb. Default is 200 mb.
      */
-    func setCacheSize(memoryCacheSize: UInt, fileCacheSize: UInt) {
-        memoryCache.setCacheSize(memoryCacheSize)
-        fileCache.setCacheSize(fileCacheSize)
+    func setCacheSize(_ memoryCacheSize: Int, fileCacheSize: Int) {
+        memoryCache.setCacheSize(Int(memoryCacheSize))
+        fileCache.setCacheSize(Int(fileCacheSize))
     }
 
     /**
@@ -129,7 +129,7 @@ class PHCache: NSObject {
 
      - parameter completion: Optional completion closure
      */
-    func clearFileChache(completion: PHVoidCompletion?) {
+    func clearFileChache(_ completion: PHVoidCompletion?) {
         fileCache.clear(completion)
     }
 
@@ -148,13 +148,13 @@ class PHCache: NSObject {
     func backgroundCleanExpiredDiskCache() {
         var backgroundTask: UIBackgroundTaskIdentifier = 0
 
-        backgroundTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler {
-            UIApplication.sharedApplication().endBackgroundTask(backgroundTask)
+        backgroundTask = UIApplication.shared.beginBackgroundTask (expirationHandler: {
+            UIApplication.shared.endBackgroundTask(backgroundTask)
             backgroundTask = UIBackgroundTaskInvalid
-        }
+        })
 
         fileCache.clearExpiredImages {
-            UIApplication.sharedApplication().endBackgroundTask(backgroundTask)
+            UIApplication.shared.endBackgroundTask(backgroundTask)
             backgroundTask = UIBackgroundTaskInvalid
         }
     }
@@ -165,18 +165,18 @@ class PHCache: NSObject {
      - returns: Size of cached files in kb.
      */
     func cacheSize() -> UInt {
-        return fileCache.cacheSize()
+        return UInt(fileCache.cacheSize())
     }
 
-    private func cacheKey(url: NSURL) -> String {
+    fileprivate func cacheKey(_ url: URL) -> String {
         return url.absoluteString.ik_MD5
     }
 
-    private func addObservers() {
-        let center = NSNotificationCenter.defaultCenter()
-        center.addObserver(self, selector: #selector(PHCache.clearMemoryCache), name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
-        center.addObserver(self, selector: #selector(PHCache.cleanExpiredDiskCache), name: UIApplicationWillTerminateNotification, object: nil)
-        center.addObserver(self, selector: #selector(PHCache.backgroundCleanExpiredDiskCache), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+    fileprivate func addObservers() {
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(PHCache.clearMemoryCache), name: NSNotification.Name.UIApplicationDidReceiveMemoryWarning, object: nil)
+        center.addObserver(self, selector: #selector(PHCache.cleanExpiredDiskCache), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
+        center.addObserver(self, selector: #selector(PHCache.backgroundCleanExpiredDiskCache), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
     
 }

@@ -13,17 +13,17 @@ import XCTest
 class NSURLImageKitTests: XCTestCase {
 
     func testThatHTTPShouldBeValidURL() {
-        let url = NSURL(string: "http://example.com")!
+        let url = URL(string: "http://example.com")!
         XCTAssertTrue(url.ik_isValid())
     }
 
     func testThatHTTPSShouldBeValidURL() {
-        let url = NSURL(string: "https://example.com")!
+        let url = URL(string: "https://example.com")!
         XCTAssertTrue(url.ik_isValid())
     }
 
     func testThatDeepLinkShouldNotBeValidURL() {
-        let url = NSURL(string: "hello://example.com")!
+        let url = URL(string: "hello://example.com")!
         XCTAssertFalse(url.ik_isValid())
     }
 }

@@ -39,7 +39,7 @@ class PHImageViewProxy {
         self.target = targetObject
     }
 
-    @objc func forwardingTargetForSelector(selector: Selector) -> AnyObject {
+    @objc func forwardingTargetForSelector(_ selector: Selector) -> AnyObject {
         return target
     }
 
