@@ -14,4 +14,4 @@ before_install:
 script:
 
     - pod lib lint --allow-warnings
-    - xctool -workspace PHImageKit.xcworkspace -scheme PHImageKitDemo clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+    - xcodebuild -workspace PHImageKit.xcworkspace -scheme PHImageKitDemo clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
