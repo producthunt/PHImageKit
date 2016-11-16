@@ -27,11 +27,9 @@ import UIKit
 extension UIImage {
 
     var ik_memoryCost : Int {
-        get {
-            let imageRef = self.cgImage;
-            let bytesPerPixel = imageRef!.bitsPerPixel / 8;
-            return imageRef!.width * imageRef!.height * bytesPerPixel;
-        }
+        guard let imageRef = self.cgImage else { return 0 }
+        let bytesPerPixel = imageRef.bitsPerPixel / 8
+        return imageRef.width * imageRef.height * bytesPerPixel
     }
 
     //NOTE: (Vlado) For super smooth image loading. Inspired from https://gist.github.com/steipete/1144242
